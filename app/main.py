@@ -47,11 +47,24 @@ async def lifespan(app: FastAPI):
     logger.info("Shutting down")
 
 
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(
     title="Smart Guided Troubleshooting Engine",
     version="1.0.0",
     default_response_class=ORJSONResponse,
     lifespan=lifespan,
+)
+
+# Enable CORS for browser integration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -64,6 +77,7 @@ async def health():
 
 
 @app.post("/v1/troubleshoot")
+@app.post("/troubleshoot")
 async def troubleshoot(request: TroubleshootRequest):
     """Main troubleshooting endpoint.
 
@@ -90,3 +104,10 @@ async def troubleshoot(request: TroubleshootRequest):
     )
 
     return ORJSONResponse(content=result)
+
+
+# Mount frontend static assets from frontend/TroubleShoot
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend" / "TroubleShoot"
+if FRONTEND_DIR.exists():
+    app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
+

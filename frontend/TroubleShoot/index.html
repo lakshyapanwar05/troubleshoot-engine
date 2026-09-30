@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Smart Troubleshooter – AI-Powered Issue Resolution</title>
+  <meta name="description" content="Samsung-style intelligent troubleshooting engine. Describe your issue and get AI-guided, step-by-step resolution instantly." />
+
+  <!-- Google Fonts: Inter for UI body, Montserrat for iconic Samsung logo typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- =============================================
+       ANIMATED SCENIC BACKGROUND
+       #bg-scene at z:-2, behind UI.
+       Sky/sun/moon driven by JS animation loop.
+       SVG landscape: mountains, lake, house, trees.
+  ============================================== -->
+  <div id="bg-scene" aria-hidden="true">
+
+    <div id="bg-sky"></div>
+    <div id="bg-stars"></div>
+    <!-- Realistic Sun (Optical glare, radiant corona, revolving connector rings & intense core) -->
+    <div id="bg-sun">
+      <div class="sun-ambient-glow"></div>
+      <div class="sun-corona"></div>
+      <!-- Revolving Celestial Connector System (activates while AI processes) -->
+      <div class="sun-connector-rings" id="sun-connector-rings">
+        <div class="connector-ring ring-outer">
+          <span class="orbit-node node-1"></span>
+          <span class="orbit-node node-2"></span>
+          <span class="orbit-node node-3"></span>
+        </div>
+        <div class="connector-ring ring-middle">
+          <span class="orbit-spark spark-1"></span>
+          <span class="orbit-spark spark-2"></span>
+        </div>
+        <div class="connector-ring ring-inner"></div>
+      </div>
+      <div class="sun-glare-horizontal"></div>
+      <div class="sun-glare-diagonal"></div>
+      <div class="sun-core"></div>
+    </div>
+
+    <!-- Solar AI Connector Conduit (Dynamic energy beam from chat console to revolving sun) -->
+    <svg id="solar-connector-svg" class="solar-connector-svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="connector-beam-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#4378FF" stop-opacity="0.95"/>
+          <stop offset="35%" stop-color="#60A5FA" stop-opacity="0.9"/>
+          <stop offset="75%" stop-color="#FDE047" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1"/>
+        </linearGradient>
+        <filter id="beam-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <!-- Diffuse ambient aura path -->
+      <path id="connector-beam-glow" class="connector-beam-glow" d="" fill="none"/>
+      <!-- High-energy streaming core path -->
+      <path id="connector-beam-core" class="connector-beam-core" d="" fill="none"/>
+      <!-- Ascending energy pulse orbs -->
+      <circle id="connector-pulse-1" class="connector-pulse-dot" cx="-100" cy="-100" r="5" fill="#FFFFFF" filter="url(#beam-glow)"/>
+      <circle id="connector-pulse-2" class="connector-pulse-dot" cx="-100" cy="-100" r="4" fill="#93C5FD" filter="url(#beam-glow)"/>
+      <circle id="connector-pulse-3" class="connector-pulse-dot" cx="-100" cy="-100" r="3.5" fill="#FDE047" filter="url(#beam-glow)"/>
+    </svg>
+
+    <!-- Moon -->
+    <div id="bg-moon">
+      <div class="moon-halo"></div>
+      <div class="moon-core">
+        <div class="moon-crater crater-a"></div>
+        <div class="moon-crater crater-b"></div>
+        <div class="moon-crater crater-c"></div>
+      </div>
+    </div>
+
+    <!-- SVG Landscape Scene -->
+    <svg id="bg-landscape" viewBox="0 0 1920 700"
+         preserveAspectRatio="xMidYMax slice"
+         xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="win-glow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="refl-blur"><feGaussianBlur stdDeviation="2.5"/></filter>
+        <linearGradient id="shimmer-fade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-opacity="0"/>
+          <stop offset="12%"  stop-opacity="1"/>
+          <stop offset="88%"  stop-opacity="1"/>
+          <stop offset="100%" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="shimmer-mask">
+          <rect width="1920" height="700" fill="url(#shimmer-fade)"/>
+        </mask>
+      </defs>
+
+      <!-- Razor-Sharp Alpine Mountain Range -->
+      <!-- Far Jagged Alpine Silhouette -->
+      <path class="sc-mtn-far"
+        d="M0,380
+           L35,310 L70,340 L130,225 L180,285 L245,160 L300,225 L365,75
+           L415,180 L470,125 L535,235 L610,65 L675,175 L740,110 L810,25
+           L870,150 L935,85 L1005,170 L1080,12 L1145,120 L1215,55 L1285,150
+           L1355,35 L1425,135 L1495,75 L1565,170 L1635,55 L1705,150 L1780,95
+           L1840,190 L1890,135 L1920,180 L1920,700 L0,700 Z"/>
+
+      <!-- Mid-Ground Razor-Sharp Faceted Alpine Peaks -->
+      <!-- Peak 1: West Alpine Horn (Summit x=365, y=75) -->
+      <polygon class="sc-mtn-lit"
+        points="365,75 295,190 320,230 240,310 270,340 190,390 365,390"/>
+      <polygon class="sc-mtn-shadow"
+        points="365,75 365,390 440,330 420,285 490,205 450,160"/>
+      <polygon class="sc-snow"
+        points="365,75 330,135 350,155 365,175 385,145 405,120"/>
+      <path class="sc-arete" d="M365,75 L330,135 L350,155 L365,175 L365,390" fill="none"/>
+
+      <!-- Peak 2: Southwest Sentinel (Summit x=610, y=65) -->
+      <polygon class="sc-mtn-lit"
+        points="610,65 530,185 555,225 480,305 510,335 440,385 610,385"/>
+      <polygon class="sc-mtn-shadow"
+        points="610,65 610,385 680,325 660,280 730,195 690,150"/>
+      <polygon class="sc-snow"
+        points="610,65 575,125 595,145 610,165 630,135 650,110"/>
+      <path class="sc-arete" d="M610,65 L575,125 L595,145 L610,165 L610,385" fill="none"/>
+
+      <!-- Peak 3: Grand Central Pinnacle (Summit x=810, y=25) -->
+      <polygon class="sc-mtn-lit"
+        points="810,25 725,160 755,205 670,295 705,330 620,385 810,385"/>
+      <polygon class="sc-mtn-shadow"
+        points="810,25 810,385 885,320 865,275 940,185 895,135"/>
+      <polygon class="sc-snow"
+        points="810,25 765,95 790,120 810,140 835,110 860,80"/>
+      <path class="sc-arete" d="M810,25 L765,95 L790,120 L810,140 L810,385" fill="none"/>
+
+      <!-- Peak 4: The Great Matterhorn Spire (Summit x=1080, y=12) -->
+      <polygon class="sc-mtn-lit"
+        points="1080,12 990,155 1020,200 930,290 965,325 880,380 1080,380"/>
+      <polygon class="sc-mtn-shadow"
+        points="1080,12 1080,380 1160,315 1135,270 1215,175 1170,125"/>
+      <polygon class="sc-snow"
+        points="1080,12 1030,85 1060,110 1080,130 1105,100 1130,70"/>
+      <path class="sc-arete" d="M1080,12 L1030,85 L1060,110 L1080,130 L1080,380" fill="none"/>
+
+      <!-- Peak 5: East Alpine Horn (Summit x=1355, y=35) -->
+      <polygon class="sc-mtn-lit"
+        points="1355,35 1270,170 1300,215 1220,300 1250,330 1180,380 1355,380"/>
+      <polygon class="sc-mtn-shadow"
+        points="1355,35 1355,380 1430,320 1410,275 1485,185 1445,135"/>
+      <polygon class="sc-snow"
+        points="1355,35 1310,105 1335,125 1355,145 1380,120 1405,90"/>
+      <path class="sc-arete" d="M1355,35 L1310,105 L1335,125 L1355,145 L1355,380" fill="none"/>
+
+      <!-- Peak 6: Far East Alpine Spire (Summit x=1635, y=55) -->
+      <polygon class="sc-mtn-lit"
+        points="1635,55 1555,180 1585,225 1510,305 1540,335 1470,380 1635,380"/>
+      <polygon class="sc-mtn-shadow"
+        points="1635,55 1635,380 1705,320 1685,280 1760,195 1720,145"/>
+      <polygon class="sc-snow"
+        points="1635,55 1595,115 1618,135 1635,155 1660,130 1685,100"/>
+      <path class="sc-arete" d="M1635,55 L1595,115 L1618,135 L1635,155 L1635,380" fill="none"/>
+
+      <!-- Sharp Serrated Mid-Ground Ridge -->
+      <path class="sc-mtn-mid"
+        d="M0,420
+           L55,345 L115,380 L200,285 L270,345 L355,245 L425,315
+           L515,220 L595,295 L685,200 L765,290 L850,190 L935,280
+           L1025,180 L1105,270 L1195,185 L1275,275 L1365,195 L1445,285
+           L1535,205 L1615,290 L1705,225 L1785,300 L1865,245 L1920,280
+           L1920,700 L0,700 Z"/>
+
+      <!-- Lake body (alpine lake basin nestled seamlessly between mountains & shoreline) -->
+      <path class="sc-lake" id="sc-lake"
+        d="M0,355
+           Q480,340 960,344 Q1440,340 1920,355
+           L1920,545
+           Q1440,528 960,518 Q480,528 0,545 Z"/>
+
+      <!-- Lake shimmer lines -->
+      <g mask="url(#shimmer-mask)">
+        <path class="sc-shimmer" d="M100,368 Q550,358 960,360 Q1370,358 1820,368" fill="none" stroke-width="2.2"/>
+        <path class="sc-shimmer" d="M80,392  Q550,380 960,384 Q1370,380 1840,392" fill="none" stroke-width="1.8"/>
+        <path class="sc-shimmer" d="M120,418 Q550,404 960,408 Q1370,404 1800,418" fill="none" stroke-width="1.5"/>
+        <path class="sc-shimmer" d="M220,446 Q580,432 960,436 Q1340,432 1700,446" fill="none" stroke-width="1.2"/>
+        <path class="sc-shimmer" d="M350,476 Q650,462 960,466 Q1270,462 1570,476" fill="none" stroke-width="1.0"/>
+        <path class="sc-shimmer" d="M500,504 Q730,494 960,496 Q1190,494 1420,504" fill="none" stroke-width="0.8"/>
+      </g>
+
+      <!-- Mid hills left flank (slopes gently from ridge down to the lake) -->
+      <path class="sc-hill"
+        d="M0,480 Q160,432 340,448 Q520,432 680,470 Q760,500 810,535
+           L810,700 L0,700 Z"/>
+
+      <!-- Mid hills right flank (slopes gently from ridge down to the lake) -->
+      <path class="sc-hill"
+        d="M1110,535 Q1160,500 1240,470 Q1400,432 1580,448 Q1760,432 1920,480
+           L1920,700 L1110,700 Z"/>
+
+      <!-- Near shoreline & tranquil water's edge -->
+      <path class="sc-shore"
+        d="M0,545 Q360,515 720,520 Q1080,512 1440,524 Q1740,535 1920,545 L1920,700 L0,700 Z"/>
+
+      <!-- Trees left -->
+      <polygon class="sc-tree" points="328,496 364,398 400,496"/>
+      <polygon class="sc-tree" points="334,469 364,384 394,469"/>
+      <polygon class="sc-tree" points="339,442 364,370 389,442"/>
+      <rect    class="sc-trunk" x="356" y="496" width="16" height="34"/>
+      <polygon class="sc-tree" points="414,506 450,408 486,506"/>
+      <polygon class="sc-tree" points="420,479 450,394 480,479"/>
+      <polygon class="sc-tree" points="425,452 450,380 475,452"/>
+      <rect    class="sc-trunk" x="442" y="506" width="15" height="28"/>
+      <polygon class="sc-tree" points="258,518 287,440 316,518"/>
+      <polygon class="sc-tree" points="263,493 287,426 311,493"/>
+      <rect    class="sc-trunk" x="279" y="518" width="14" height="24"/>
+      <polygon class="sc-tree sc-tree-far" points="190,530 214,466 238,530"/>
+      <polygon class="sc-tree sc-tree-far" points="194,507 214,452 234,507"/>
+      <rect    class="sc-trunk sc-tree-far" x="206" y="530" width="12" height="20"/>
+      <polygon class="sc-tree sc-tree-far" points="120,542 140,486 160,542"/>
+      <rect    class="sc-trunk sc-tree-far" x="132" y="542" width="10" height="16"/>
+
+      <!-- Center lake tranquil water ripples -->
+      <g opacity="0.4">
+        <path class="sc-shimmer" d="M680,392 Q780,385 880,392" fill="none" stroke-width="1.8"/>
+        <path class="sc-shimmer" d="M720,412 Q830,405 940,412" fill="none" stroke-width="1.5"/>
+        <path class="sc-shimmer" d="M650,434 Q780,426 910,434" fill="none" stroke-width="1.2"/>
+        <path class="sc-shimmer" d="M740,458 Q860,450 980,458" fill="none" stroke-width="1.0"/>
+      </g>
+
+      <!-- Dock with warm lantern extending into open lake waters -->
+      <g class="sc-dock">
+        <rect class="d-post"  x="1150" y="468" width="9"   height="56"/>
+        <rect class="d-post"  x="1210" y="470" width="9"   height="54"/>
+        <rect class="d-post"  x="1270" y="472" width="9"   height="52"/>
+        <rect class="d-plank" x="1140" y="464" width="148" height="9"  rx="2"/>
+        <rect class="d-plank" x="1142" y="474" width="144" height="5"/>
+        <rect class="d-plank" x="1144" y="480" width="140" height="4"/>
+        <!-- Moored wooden rowboat -->
+        <path class="d-boat" d="M1205,482 Q1255,475 1305,482 L1297,497 Q1255,504 1213,497 Z"/>
+        <rect class="d-mast"  x="1252" y="464" width="5"   height="34"/>
+        <!-- Glowing dock lantern on post -->
+        <circle id="sc-dock-lantern" cx="1154" cy="458" r="6" fill="#FFE082" filter="url(#win-glow)" opacity="0.95"/>
+        <rect x="1152" y="455" width="4" height="6" fill="#D4AF37"/>
+      </g>
+
+      <!-- Trees right -->
+      <polygon class="sc-tree" points="1362,498 1398,400 1434,498"/>
+      <polygon class="sc-tree" points="1368,471 1398,386 1428,471"/>
+      <polygon class="sc-tree" points="1373,444 1398,372 1423,444"/>
+      <rect    class="sc-trunk" x="1390" y="498" width="16" height="32"/>
+      <polygon class="sc-tree" points="1454,508 1489,410 1524,508"/>
+      <polygon class="sc-tree" points="1460,481 1489,396 1518,481"/>
+      <polygon class="sc-tree" points="1465,454 1489,382 1513,454"/>
+      <rect    class="sc-trunk" x="1481" y="508" width="15" height="28"/>
+      <polygon class="sc-tree" points="1292,514 1322,434 1352,514"/>
+      <polygon class="sc-tree" points="1297,489 1322,420 1347,489"/>
+      <rect    class="sc-trunk" x="1314" y="514" width="14" height="24"/>
+      <polygon class="sc-tree sc-tree-far" points="1560,526 1584,462 1608,526"/>
+      <polygon class="sc-tree sc-tree-far" points="1564,503 1584,449 1604,503"/>
+      <rect    class="sc-trunk sc-tree-far" x="1576" y="526" width="12" height="20"/>
+      <polygon class="sc-tree sc-tree-far" points="1652,534 1674,474 1696,534"/>
+      <rect    class="sc-trunk sc-tree-far" x="1665" y="534" width="11" height="18"/>
+      <polygon class="sc-tree sc-tree-far" points="1748,542 1768,484 1788,542"/>
+      <rect    class="sc-trunk sc-tree-far" x="1760" y="542" width="10" height="16"/>
+
+      <!-- Foreground ground -->
+      <path class="sc-foreground"
+        d="M0,618 Q242,600 484,606 Q722,598 962,602
+           Q1202,598 1442,606 Q1682,600 1920,618
+           L1920,700 L0,700 Z"/>
+
+    </svg><!-- /bg-landscape -->
+
+  </div><!-- /bg-scene -->
+
+  <!-- =============================================
+       TIME CONTROLLER  (floating panel)
+       bgSliderInput(), bgSetPreset(), bgSetLive()
+       are global JS functions called from here.
+  ============================================== -->
+  <div id="time-ctrl" aria-label="Time of day controller">
+    <div class="tc-glass">
+      <div class="tc-top">
+        <div class="tc-clock">
+          <span id="tc-h">12</span><span class="tc-sep">:</span><span id="tc-m">00</span>
+          <span id="tc-ampm">PM</span>
+        </div>
+        <div id="tc-phase" class="tc-phase">High Noon</div>
+        <button id="tc-live" class="tc-live" onclick="bgSetLive()" title="Sync with system clock">
+          <span class="tc-live-dot"></span>Live
+        </button>
+      </div>
+      <div class="tc-presets" role="group" aria-label="Time of day presets">
+        <button class="tc-btn" onclick="bgSetPreset(5.5)">Dawn</button>
+        <button class="tc-btn" onclick="bgSetPreset(9)">Morning</button>
+        <button class="tc-btn" onclick="bgSetPreset(12)">Noon</button>
+        <button class="tc-btn" onclick="bgSetPreset(18.5)">Sunset</button>
+        <button class="tc-btn" onclick="bgSetPreset(22)">Night</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       APP WRAPPER
+       Contains the full page background + layout
+  ============================================== -->
+  <div class="app-wrapper">
+
+    <!-- Ambient glow blobs (pure CSS decoration) -->
+    <div class="ambient-blob blob-1" aria-hidden="true"></div>
+    <div class="ambient-blob blob-2" aria-hidden="true"></div>
+
+    <!-- ==========================================
+         MAIN CONTAINER
+         Centered card that holds all UI panels
+    =========================================== -->
+    <main class="container" role="main">
+
+      <!-- ========================================
+           HEADER SECTION
+           Branding, title, subtitle
+      ========================================= -->
+      <header class="header-section">
+        <!-- Title + subtitle (Samsung-style geometric wordmark) -->
+        <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+          <h1 class="hero-title samsung-logo-type" aria-label="Smart Troubleshooter">
+            <span class="samsung-word">SM<span class="samsung-a">Λ</span>RT</span>
+            <span class="samsung-word">TROUBLESHOOTER</span>
+          </h1>
+          <a href="/galaxy-emulator.html" class="emulator-nav-link" title="Open Galaxy Emulator" aria-label="Galaxy Emulator">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18.01"/>
+            </svg>
+            Galaxy Emulator
+          </a>
+        </div>
+        <p class="hero-subtitle">AI-Guided Issue Resolution Engine</p>
+      </header>
+
+      <!-- ========================================
+           ERROR BANNER
+           Shown when API call fails. Dismissible.
+           Hidden by default; JS calls showError() to reveal.
+      ========================================= -->
+      <div
+        class="error-banner"
+        id="error-banner"
+        role="alert"
+        aria-live="assertive"
+        hidden
+      >
+        <div class="error-banner-inner">
+          <!-- Error icon -->
+          <svg class="error-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+          </svg>
+          <span id="error-banner-text">Something went wrong. Please try again.</span>
+        </div>
+        <!-- Dismiss button -->
+        <button
+          class="error-dismiss"
+          type="button"
+          onclick="hideError()"
+          aria-label="Dismiss error"
+        >×</button>
+      </div>
+
+      <!-- ========================================
+           OUTPUT SECTIONS
+           All panels are hidden at first.
+           They will be shown/populated by JS.
+           Future phases will fill them with data.
+      ========================================= -->
+      <div class="output-area" id="output-area" aria-live="polite" aria-label="Troubleshooting results">
+
+        <!-- Analyzing Placeholder -->
+        <!-- Shown while awaiting backend response (Phase 2+) -->
+        <div class="analyzing-panel" id="analyzing-panel" role="status" aria-label="Analyzing">
+          <div class="analyzing-orb" aria-hidden="true">
+            <span class="orb-ring ring-1"></span>
+            <span class="orb-ring ring-2"></span>
+            <span class="orb-ring ring-3"></span>
+            <svg class="orb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>
+            </svg>
+          </div>
+          <p class="analyzing-text">Analyzing your issue<span class="ellipsis-anim"></span></p>
+          <p class="analyzing-sub">AI engine is processing your query</p>
+        </div>
+
+        <!-- PANEL 1 - DETECTED ISSUES -->
+        <!-- Phase 3: Multi-intent display. Each intent will be an .intent-chip -->
+        <section class="output-panel" id="panel-detected-issues" aria-label="Detected Issues" hidden>
+          <div class="panel-header">
+            <div class="panel-icon-wrap accent-blue" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <circle cx="12" cy="12" r="8" opacity=".4"/>
+                <circle cx="12" cy="12" r="12" opacity=".15"/>
+              </svg>
+            </div>
+            <div class="panel-title-group">
+              <h2 class="panel-title">Detected Issues</h2>
+              <p class="panel-subtitle">Multi-intent analysis results</p>
+            </div>
+            <span class="panel-badge" id="intent-count-badge">0 found</span>
+          </div>
+          <!--
+            FUTURE PHASE 3: Dynamically inject intent chips here via renderIntents(data).
+            Each chip:
+              <div class="intent-chip" role="listitem">
+                <span class="intent-icon">icon</span>
+                <span class="intent-label">Battery Drain</span>
+                <span class="intent-confidence">94%</span>
+                <div class="confidence-bar" style="--pct: 94%"></div>
+              </div>
+          -->
+          <div class="intent-chips-container" id="intent-chips" role="list" aria-label="Detected intents"></div>
+        </section>
+
+        <!-- PANEL 2 - EXPLAINABLE AI PANEL -->
+        <!-- Phase 4: Keywords, confidence, reasoning. JSON data from backend parsed here. -->
+        <section class="output-panel" id="panel-explainable-ai" aria-label="Explainable AI Panel" hidden>
+          <div class="panel-header">
+            <div class="panel-icon-wrap accent-purple" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
+              </svg>
+            </div>
+            <div class="panel-title-group">
+              <h2 class="panel-title">Explainable AI</h2>
+              <p class="panel-subtitle">Why the AI made these recommendations</p>
+            </div>
+          </div>
+          <!--
+            FUTURE PHASE 4: Populate via renderExplainPanel(data).
+            Sections:
+              #xai-keywords   - highlight matched keywords
+              #xai-confidence - confidence score gauge
+              #xai-reasoning  - model reasoning text
+              #xai-raw        - raw JSON viewer (collapsible)
+          -->
+          <div class="xai-grid">
+            <div class="xai-card" id="xai-keywords">
+              <span class="xai-card-label">Matched Keywords</span>
+              <div class="xai-keywords-list" role="list" aria-label="Matched keywords"></div>
+            </div>
+            <div class="xai-card" id="xai-confidence">
+              <span class="xai-card-label">Confidence Score</span>
+              <div class="confidence-gauge">
+                <svg class="gauge-svg" viewBox="0 0 100 60">
+                  <path class="gauge-track" d="M10 55 A45 45 0 0 1 90 55" fill="none" stroke-width="8" stroke-linecap="round"/>
+                  <path class="gauge-fill" id="gauge-fill-path" d="M10 55 A45 45 0 0 1 90 55" fill="none" stroke-width="8" stroke-linecap="round" stroke-dasharray="141.4" stroke-dashoffset="141.4"/>
+                </svg>
+                <div class="gauge-value" id="gauge-value">--</div>
+              </div>
+            </div>
+            <div class="xai-card xai-card-wide" id="xai-reasoning">
+              <span class="xai-card-label">AI Reasoning</span>
+              <p class="xai-reasoning-text" id="xai-reasoning-text">Reasoning will appear here once analysis is complete.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 3 - STEP-BY-STEP TROUBLESHOOTING -->
+        <!-- Phase 2/3: Adaptive troubleshooting flow. Steps rendered one-by-one via renderStep(). -->
+        <section class="output-panel" id="panel-steps" aria-label="Troubleshooting Steps" hidden>
+          <div class="panel-header">
+            <div class="panel-icon-wrap accent-teal" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+              </svg>
+            </div>
+            <div class="panel-title-group">
+              <h2 class="panel-title">Troubleshooting Steps</h2>
+              <p class="panel-subtitle">Follow these steps in order</p>
+            </div>
+            <span class="panel-badge" id="step-count-badge">0 steps</span>
+          </div>
+          <!--
+            FUTURE PHASE 2/3: Steps injected via renderStep(stepData, index).
+            Step DOM structure:
+            <div class="step-item" data-step="1" role="listitem">
+              <div class="step-number">1</div>
+              <div class="step-body">
+                <span class="step-badge recommended">Recommended</span>  -- Phase 4 self-healing
+                <h3 class="step-title">Title</h3>
+                <p class="step-desc">Description</p>
+                <div class="step-action-row">
+                  <a class="step-deep-link" href="...">Open Settings</a>  -- deep link action
+                  <button class="step-done-btn">Mark Done</button>
+                </div>
+              </div>
+            </div>
+          -->
+          <div class="steps-list" id="steps-list" role="list" aria-label="Troubleshooting steps"></div>
+
+          <!-- Progress bar across steps -->
+          <div class="steps-progress-row" id="steps-progress-row" hidden>
+            <span class="progress-label" id="progress-label">Step 0 of 0</span>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progress-bar-fill" style="--progress: 0%"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 4 - FEEDBACK SECTION -->
+        <!-- "Did this solve your issue?" Phase 2+: Submit feedback to backend. -->
+        <section class="output-panel feedback-panel" id="panel-feedback" aria-label="Solution Feedback" hidden>
+          <div class="panel-header">
+            <div class="panel-icon-wrap accent-green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"/>
+              </svg>
+            </div>
+            <div class="panel-title-group">
+              <h2 class="panel-title">Was This Helpful?</h2>
+              <p class="panel-subtitle">Your feedback improves future recommendations</p>
+            </div>
+          </div>
+
+          <div class="feedback-body">
+            <p class="feedback-question">Did these steps solve your issue?</p>
+            <div class="feedback-buttons" role="group" aria-label="Feedback options">
+              <button
+                class="feedback-btn feedback-yes"
+                id="feedback-yes"
+                type="button"
+                onclick="submitFeedback('yes')"
+                aria-label="Yes, issue resolved"
+              >
+                <span>Yes, Fixed</span>
+              </button>
+              <button
+                class="feedback-btn feedback-no"
+                id="feedback-no"
+                type="button"
+                onclick="submitFeedback('no')"
+                aria-label="No, issue not resolved"
+              >
+                <span>Not Yet</span>
+              </button>
+            </div>
+            <!-- Feedback confirmation message (shown after click) -->
+            <div class="feedback-confirmation" id="feedback-confirmation" hidden aria-live="polite">
+              <svg class="confirm-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/>
+              </svg>
+              <span id="feedback-confirmation-text">Thank you for your feedback!</span>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /output-area -->
+
+      <!-- ========================================
+           INPUT SECTION — Floating Bottom Console
+           Docked gracefully at the bottom of the viewport
+           over the tranquil shoreline. Keeps mountain & lake scenery
+           100% open and unobstructed.
+      ========================================= -->
+      <section class="input-section" aria-label="Issue Input">
+        <div class="lakeside-console" id="lakeside-console">
+          <div class="console-prompt-wrap">
+            <!-- Subtle AI query sparkle -->
+            <span class="console-sparkle" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                <path fill-rule="evenodd" d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zm8-5a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zM5 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 015 10zm11.657-5.657a.75.75 0 010 1.061l-1.06 1.06a.75.75 0 11-1.062-1.06l1.06-1.061a.75.75 0 011.062 0zm-10.25 10.25a.75.75 0 010 1.061l-1.06 1.06a.75.75 0 11-1.062-1.06l1.06-1.061a.75.75 0 011.062 0zm10.25 0a.75.75 0 011.062 0l1.06 1.06a.75.75 0 01-1.06 1.061l-1.062-1.06a.75.75 0 010-1.061zm-10.25-10.25a.75.75 0 011.062 0l1.06 1.06a.75.75 0 11-1.06 1.061l-1.062-1.06a.75.75 0 010-1.061zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"/>
+              </svg>
+            </span>
+
+            <!-- Integrated Textarea (translucent, blends with water) -->
+            <textarea
+              id="issue-input"
+              class="issue-input"
+              placeholder="Describe your issue... (e.g., battery draining while gaming)"
+              rows="2"
+              maxlength="500"
+              aria-label="Describe your issue input"
+            ></textarea>
+
+            <!-- Sleek circular Send Orb (NOT a big button!) -->
+            <button
+              id="submit-btn"
+              class="submit-btn send-orb"
+              type="button"
+              onclick="sendQuery()"
+              aria-label="Analyze issue"
+              title="Analyze issue (or press Enter)"
+            >
+              <span class="btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                </svg>
+              </span>
+              <!-- Loading spinner -->
+              <span class="btn-spinner" id="btn-spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <!-- Subtle bottom row: water-pebble suggestion chips + char counter -->
+          <div class="console-footer">
+            <div class="example-chips" aria-label="Quick examples">
+              <span class="chip-label">Suggestions:</span>
+              <button class="chip" data-query="My tablet screen keeps going blank when I open Gmail" type="button">Email screen blank</button>
+              <button class="chip" data-query="My phone screen is completely black and won't turn on even though it's powered" type="button">Black screen</button>
+              <button class="chip" data-query="My phone screen is cracked and I can't use it" type="button">Cracked screen</button>
+              <button class="chip" data-query="My phone touch screen is laggy and slow to respond" type="button">Touch lag</button>
+              <button class="chip" data-query="My phone screen flickers and goes blank when I open it" type="button">Screen flicker</button>
+            </div>
+            <div class="char-count" id="char-count" aria-live="polite">0 / 500</div>
+          </div>
+        </div>
+      </section>
+
+    </main><!-- /container -->
+
+    <!-- Footer -->
+    <footer class="app-footer" role="contentinfo">
+      <p>Smart Guided Troubleshooting Engine &mdash; Phase 1 &bull; Built with AI</p>
+    </footer>
+
+  </div><!-- /app-wrapper -->
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,2653 @@
+/* =======================================================
+   SMART GUIDED TROUBLESHOOTING ENGINE — styles.css
+   Phase 1 UI Foundation
+   Samsung-inspired dark theme, premium design
+   ======================================================= */
+
+/* -------------------------------------------------------
+   1. DESIGN TOKENS / CSS VARIABLES
+------------------------------------------------------- */
+:root {
+  /* Brand colors */
+  --brand-primary:    #6C8EF5;
+  --brand-secondary:  #A78BFA;
+  --brand-teal:       #2DD4BF;
+  --brand-green:      #34D399;
+  --brand-red:        #F87171;
+
+  /* Accent palettes for panels */
+  --accent-blue:      #6C8EF5;
+  --accent-blue-glow: rgba(108, 142, 245, 0.2);
+  --accent-purple:    #A78BFA;
+  --accent-purple-glow: rgba(167, 139, 250, 0.2);
+  --accent-teal:      #2DD4BF;
+  --accent-teal-glow: rgba(45, 212, 191, 0.2);
+  --accent-green:     #34D399;
+  --accent-green-glow: rgba(52, 211, 153, 0.2);
+
+  /* Background layers */
+  --bg-page:          #0A0C12;
+  --bg-card:          #111420;
+  --bg-card-hover:    #161A2A;
+  --bg-input:         #0E1019;
+  --bg-panel:         #12151F;
+  --bg-tag:           rgba(108, 142, 245, 0.12);
+  --bg-chip:          rgba(255, 255, 255, 0.05);
+  --bg-chip-hover:    rgba(108, 142, 245, 0.15);
+
+  /* Borders */
+  --border-subtle:    rgba(255, 255, 255, 0.06);
+  --border-panel:     rgba(255, 255, 255, 0.08);
+  --border-focus:     rgba(108, 142, 245, 0.6);
+  --border-input:     rgba(255, 255, 255, 0.1);
+
+  /* Text */
+  --text-primary:     #F0F2FA;
+  --text-secondary:   #8892AA;
+  --text-muted:       #4A5268;
+  --text-accent:      #6C8EF5;
+
+  /* Shadows */
+  --shadow-card:      0 4px 24px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.3);
+  --shadow-panel:     0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-btn:       0 4px 20px rgba(108, 142, 245, 0.35);
+  --shadow-btn-hover: 0 6px 28px rgba(108, 142, 245, 0.5);
+  --shadow-glow-blue: 0 0 24px rgba(108, 142, 245, 0.25);
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+
+  /* Radii */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* -------------------------------------------------------
+   2. RESET & BASE
+------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------------------
+   3. APP WRAPPER & AMBIENT DECORATION
+------------------------------------------------------- */
+.app-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px var(--space-md) var(--space-xl);
+  overflow-x: clip;
+}
+
+/* Subtle ambient glow blobs in background */
+.ambient-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  animation: blobFloat 12s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #6C8EF5, transparent 70%);
+  top: -100px;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #A78BFA, transparent 70%);
+  bottom: -80px;
+  right: -100px;
+  animation-delay: 4s;
+}
+
+@keyframes blobFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, 20px) scale(1.05); }
+}
+
+/* -------------------------------------------------------
+   4. MAIN CONTAINER — Scenic Layout with Bottom Dock
+------------------------------------------------------- */
+.container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 740px;
+  min-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* -------------------------------------------------------
+   5. HEADER SECTION
+------------------------------------------------------- */
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding-bottom: 2px;
+}
+
+/* Brand mark (icon circle) */
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(108,142,245,0.15), rgba(167,139,250,0.15));
+  border: 1.5px solid rgba(108,142,245,0.3);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-glow-blue);
+  animation: brandPulse 3s ease-in-out infinite;
+}
+
+@keyframes brandPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(108,142,245,0.2); }
+  50%       { box-shadow: 0 0 35px rgba(108,142,245,0.4); }
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* AI Status badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  background: rgba(10, 20, 30, 0.55);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--brand-green);
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all var(--transition-normal);
+}
+
+.status-badge.analyzing {
+  background: rgba(10, 18, 36, 0.65);
+  border-color: rgba(108, 142, 245, 0.4);
+  color: var(--brand-primary);
+}
+
+.status-badge.error {
+  background: rgba(30, 12, 16, 0.65);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: var(--brand-red);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--brand-green);
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.status-badge.analyzing .status-dot {
+  background: var(--brand-primary);
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.85); }
+}
+
+/* -------------------------------------------------------
+   Samsung-Style Hero Brand Title
+   Matches the iconic geometric grotesque wordmark of Samsung:
+   - Ultra-bold geometric sans-serif (Montserrat 800/900)
+   - Uppercase tracking (letter-spacing: 0.08em)
+   - Iconic crossbar-less 'A' (SMΛRT)
+   - Crisp gradient & high-contrast drop-shadow
+------------------------------------------------------- */
+.hero-title.samsung-logo-type {
+  font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 38px);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.45em;
+  row-gap: 0.1em;
+  line-height: 1.15;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E6EEFA 40%, #A9C8FF 80%, #76A5FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 20px rgba(67, 120, 255, 0.35));
+  transition: all 0.3s ease;
+}
+
+.hero-title.samsung-logo-type:hover {
+  filter: drop-shadow(0 3px 16px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 30px rgba(67, 120, 255, 0.55));
+  transform: translateY(-1px);
+}
+
+.samsung-word {
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.08em;
+}
+
+/* The iconic Samsung crossbar-less 'A' */
+.samsung-a {
+  display: inline-block;
+  font-style: normal;
+  line-height: 1;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  transform: scaleY(0.97);
+  margin: 0 0.015em;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Hero subtitle — clean corporate tech tracking */
+.hero-subtitle {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  color: rgba(226, 235, 252, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+  margin-top: 2px;
+}
+
+/* Feature tags row */
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--bg-tag);
+  border: 1px solid rgba(108, 142, 245, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------
+   6. LAKESIDE CONSOLE — Integrated Into The Scenery
+   A translucent water-glass console floating right over the lake waters.
+   NO big buttons — compact, glowing circular send orb.
+------------------------------------------------------- */
+.input-section {
+  width: 100%;
+  margin-top: auto;
+  position: sticky;
+  bottom: 16px;
+  z-index: 20;
+}
+
+.lakeside-console {
+  position: relative;
+  background: rgba(10, 15, 26, 0.52);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  padding: 14px 18px 12px;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(108, 142, 245, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lakeside-console:focus-within {
+  background: rgba(10, 15, 26, 0.68);
+  border-color: rgba(108, 142, 245, 0.45);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    0 0 32px rgba(108, 142, 245, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.console-prompt-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.console-sparkle {
+  color: var(--brand-primary);
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.lakeside-console:focus-within .console-sparkle {
+  opacity: 1;
+  transform: rotate(15deg) scale(1.1);
+  filter: drop-shadow(0 0 6px rgba(108, 142, 245, 0.8));
+}
+
+.issue-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 400;
+  color: #F8FAFC;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  line-height: 1.5;
+  padding: 6px 0;
+}
+
+.issue-input::placeholder {
+  color: rgba(203, 213, 225, 0.45);
+  font-style: normal;
+}
+
+/* Compact Glowing Send Orb (NO big button!) */
+.submit-btn.send-orb {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6C8EF5, #A78BFA);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 14px rgba(108, 142, 245, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.submit-btn.send-orb:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(108, 142, 245, 0.65);
+}
+
+.submit-btn.send-orb:active {
+  transform: scale(0.96);
+}
+
+.submit-btn.send-orb:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn.send-orb .btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.submit-btn.send-orb:hover .btn-icon {
+  transform: scale(1.1);
+}
+
+/* Loading spinner inside send orb */
+.submit-btn.loading .btn-icon {
+  display: none;
+}
+
+.submit-btn.loading .btn-spinner {
+  display: block;
+}
+
+.console-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  margin-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.example-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(203, 213, 225, 0.5);
+  letter-spacing: 0.03em;
+}
+
+.chip {
+  padding: 2.5px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  font-family: var(--font-family);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: rgba(108, 142, 245, 0.22);
+  border-color: rgba(108, 142, 245, 0.45);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.chip:active {
+  transform: translateY(0);
+}
+
+.char-count {
+  font-size: 11px;
+  color: rgba(203, 213, 225, 0.4);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.char-count.near-limit {
+  color: #FBBF24;
+}
+
+.char-count.at-limit {
+  color: var(--brand-red);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+
+.submit-btn:hover .btn-icon {
+  transform: translateX(3px);
+}
+
+/* Loading spinner */
+.btn-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.submit-btn.loading .btn-text { display: none; }
+.submit-btn.loading .btn-icon { display: none; }
+.submit-btn.loading .btn-spinner { display: block; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* -------------------------------------------------------
+   7. OUTPUT AREA
+------------------------------------------------------- */
+.output-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+  flex: 1;
+  margin: 8px 0 16px;
+}
+
+/* Hidden by default — JS will show panels */
+.output-area:empty { display: none; }
+
+/* -------------------------------------------------------
+   8. ANALYZING PANEL
+------------------------------------------------------- */
+.analyzing-panel {
+  display: none; /* JS toggles to flex */
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.analyzing-panel.visible {
+  display: flex;
+  animation: fadeInUp var(--transition-slow) both;
+}
+
+/* Animated orb */
+.analyzing-orb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid var(--brand-primary);
+  animation: orbExpand 2.4s ease-out infinite;
+}
+
+.ring-1 { width: 100%; height: 100%; opacity: 0.6; animation-delay: 0s; }
+.ring-2 { width: 80%;  height: 80%;  opacity: 0.4; animation-delay: 0.6s; }
+.ring-3 { width: 60%;  height: 60%;  opacity: 0.25; animation-delay: 1.2s; }
+
+@keyframes orbExpand {
+  0%   { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.orb-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--brand-primary);
+  animation: iconSpin 4s linear infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes iconSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.analyzing-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.analyzing-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Animated ellipsis */
+.ellipsis-anim::after {
+  content: '';
+  animation: ellipsis 1.6s steps(4, end) infinite;
+}
+
+@keyframes ellipsis {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
+}
+
+/* -------------------------------------------------------
+   9. OUTPUT PANELS (shared styles)
+------------------------------------------------------- */
+.output-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-panel);
+  animation: fadeInUp var(--transition-slow) both;
+  display: block;
+}
+
+.output-panel[hidden] {
+  display: none !important;
+}
+
+/* Entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Panel header (icon + title + badge row) */
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* Panel icon circle */
+.panel-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.panel-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Accent color variants */
+.accent-blue   { background: var(--accent-blue-glow);   color: var(--accent-blue);   border: 1px solid rgba(108,142,245,0.25); }
+.accent-purple { background: var(--accent-purple-glow); color: var(--accent-purple); border: 1px solid rgba(167,139,250,0.25); }
+.accent-teal   { background: var(--accent-teal-glow);   color: var(--accent-teal);   border: 1px solid rgba(45,212,191,0.25); }
+.accent-green  { background: var(--accent-green-glow);  color: var(--accent-green);  border: 1px solid rgba(52,211,153,0.25); }
+
+.panel-title-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.panel-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.panel-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.panel-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------
+   10. PANEL 1 — DETECTED ISSUES
+------------------------------------------------------- */
+
+/* Container for intent chips — injected by Phase 3 JS */
+.intent-chips-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/*
+  Intent chip (Phase 3 JS will create these):
+  .intent-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(108,142,245,0.06);
+    border: 1px solid rgba(108,142,245,0.15);
+    border-radius: 12px;
+    transition: all 250ms ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .confidence-bar — width controlled by --pct CSS custom property
+*/
+.intent-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 14px var(--space-md);
+  background: rgba(108,142,245,0.06);
+  border: 1px solid rgba(108,142,245,0.15);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 300ms ease both;
+}
+
+.intent-chip:hover {
+  background: rgba(108,142,245,0.1);
+  border-color: rgba(108,142,245,0.3);
+  transform: translateX(3px);
+}
+
+.intent-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.intent-label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.intent-confidence {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+/* Confidence progress bar at bottom of chip */
+.confidence-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: var(--pct, 0%);
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 0 2px 2px 0;
+  transition: width 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* -------------------------------------------------------
+   11. PANEL 2 — EXPLAINABLE AI
+------------------------------------------------------- */
+.xai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-md);
+}
+
+.xai-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.xai-card-wide {
+  grid-column: 1 / -1; /* spans full width */
+}
+
+.xai-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* Keywords list — Phase 4 JS injects keyword pills */
+.xai-keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  min-height: 32px;
+  align-content: flex-start;
+}
+
+/* Keyword pill (Phase 4 template):
+   <span class="keyword-pill">battery</span> */
+.keyword-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(167, 139, 250, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-purple);
+}
+
+/* Confidence gauge (SVG arc) */
+.confidence-gauge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gauge-svg {
+  width: 100%;
+  max-width: 140px;
+}
+
+.gauge-track { stroke: rgba(255,255,255,0.08); }
+.gauge-fill  { stroke: url(#gaugeGrad); transition: stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1); }
+
+.gauge-value {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  bottom: 8px;
+}
+
+.xai-reasoning-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* -------------------------------------------------------
+   12. PANEL 3 — TROUBLESHOOTING STEPS
+------------------------------------------------------- */
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Step item (Phase 2/3 JS renders these) */
+.step-item {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 300ms ease both;
+}
+
+.step-item:hover {
+  background: rgba(45, 212, 191, 0.04);
+  border-color: rgba(45, 212, 191, 0.2);
+}
+
+.step-item.completed {
+  opacity: 0.6;
+}
+
+.step-item.completed .step-number {
+  background: var(--accent-green-glow);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: var(--accent-green);
+}
+
+/* Step number circle */
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-teal-glow);
+  border: 1.5px solid rgba(45, 212, 191, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+  transition: all var(--transition-normal);
+}
+
+.step-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* "Recommended" badge (Phase 4 self-healing indicator) */
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.step-badge.recommended {
+  background: rgba(108, 142, 245, 0.15);
+  border: 1px solid rgba(108, 142, 245, 0.35);
+  color: var(--accent-blue);
+}
+
+.step-badge.self-healing {
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  color: var(--accent-green);
+}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.step-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.step-action-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-top: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* Deep link action button (Phase 4) */
+.step-deep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3.5px 10px;
+  background: rgba(108, 142, 245, 0.1);
+  border: 1px solid rgba(108, 142, 245, 0.25);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.step-deep-link:hover {
+  background: rgba(108, 142, 245, 0.2);
+  transform: translateX(2px);
+}
+
+/* Mark done button */
+.step-done-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3.5px 10px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.step-done-btn:hover {
+  background: var(--accent-green-glow);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: var(--accent-green);
+}
+
+/* Steps progress bar */
+.steps-progress-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.progress-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.progress-bar-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: var(--progress, 0%);
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+  border-radius: var(--radius-full);
+  transition: width 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* -------------------------------------------------------
+   13. PANEL 4 — FEEDBACK
+------------------------------------------------------- */
+.feedback-panel {
+  text-align: center;
+}
+
+.feedback-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.feedback-question {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feedback-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-family);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: 1.5px solid;
+}
+
+.feedback-yes {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.35);
+  color: var(--accent-green);
+}
+
+.feedback-yes:hover {
+  background: rgba(52, 211, 153, 0.2);
+  border-color: rgba(52, 211, 153, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(52, 211, 153, 0.2);
+}
+
+.feedback-no {
+  background: rgba(248, 113, 113, 0.08);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: var(--brand-red);
+}
+
+.feedback-no:hover {
+  background: rgba(248, 113, 113, 0.15);
+  border-color: rgba(248, 113, 113, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(248, 113, 113, 0.15);
+}
+
+.feedback-btn:active {
+  transform: translateY(0);
+}
+
+.feedback-btn.selected {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.feedback-emoji {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Confirmation message */
+.feedback-confirmation {
+  display: none;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-green);
+  animation: fadeInUp var(--transition-slow) both;
+}
+
+.feedback-confirmation:not([hidden]) {
+  display: flex;
+}
+
+.confirm-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------
+   14. FOOTER
+------------------------------------------------------- */
+.app-footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* -------------------------------------------------------
+   15. SCROLLBAR (Webkit)
+------------------------------------------------------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* -------------------------------------------------------
+   16. RESPONSIVE
+------------------------------------------------------- */
+@media (max-width: 600px) {
+  .app-wrapper {
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+  }
+
+  .input-card {
+    padding: var(--space-lg);
+  }
+
+  .output-panel {
+    padding: var(--space-lg);
+  }
+
+  .xai-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .xai-card-wide {
+    grid-column: 1;
+  }
+
+  .feature-tags .tag {
+    font-size: 10px;
+    padding: 3px 9px;
+  }
+
+  .feedback-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .feedback-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .panel-header {
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .brand-mark {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* -------------------------------------------------------
+   17. UTILITY CLASSES (for JS use)
+------------------------------------------------------- */
+.hidden  { display: none !important; }
+.visible { display: flex !important; }
+.fade-in { animation: fadeInUp var(--transition-slow) both; }
+
+/* -------------------------------------------------------
+   18. PHASE 2 — API INTEGRATION STYLES
+------------------------------------------------------- */
+
+/* ── Error Banner ── */
+.error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 14px var(--space-lg);
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--radius-xl);
+  animation: fadeInUp var(--transition-slow) both;
+}
+
+.error-banner[hidden] { display: none !important; }
+
+.error-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.error-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--brand-red);
+  flex-shrink: 0;
+}
+
+.error-banner span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-red);
+  line-height: 1.5;
+}
+
+.error-dismiss {
+  background: none;
+  border: none;
+  color: var(--brand-red);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+  flex-shrink: 0;
+  font-family: var(--font-family);
+}
+
+.error-dismiss:hover { opacity: 1; }
+
+/* ── Category chip checkmark (Phase 2) ── */
+.category-chip {
+  /* Override hover color to match green checkmark */
+  border-color: rgba(52, 211, 153, 0.2);
+  background: rgba(52, 211, 153, 0.05);
+}
+
+.category-chip:hover {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.category-check {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-green);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+/* ── Context tags row (below category chips) ── */
+.context-tags-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.context-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.context-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.context-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent-teal);
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+/* ── Recommended step highlight (Phase 2 visual emphasis) ── */
+.step-item.is-recommended {
+  border-color: rgba(108, 142, 245, 0.3);
+  background: rgba(108, 142, 245, 0.04);
+  position: relative;
+}
+
+/* Left accent bar for recommended steps */
+.step-item.is-recommended::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 3px 0 0 3px;
+}
+
+.step-item.is-recommended:hover {
+  border-color: rgba(108, 142, 245, 0.45);
+  background: rgba(108, 142, 245, 0.07);
+}
+
+/* ── Deep link button (Phase 2: styled as button, not bare link) ── */
+.step-deep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  background: rgba(108, 142, 245, 0.12);
+  border: 1px solid rgba(108, 142, 245, 0.28);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.step-deep-link::after {
+  content: '\2192'; /* → arrow */
+  font-size: 13px;
+}
+
+.step-deep-link:hover {
+  background: rgba(108, 142, 245, 0.22);
+  border-color: rgba(108, 142, 245, 0.5);
+  transform: translateX(2px);
+  box-shadow: 0 2px 8px rgba(108, 142, 245, 0.2);
+}
+
+/* ── No-results hint (empty state text inside panels) ── */
+.no-results-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: var(--space-md) 0;
+  text-align: center;
+}
+
+/* ── XAI "Why this solution?" sub-header ── */
+.xai-why-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.xai-why-header::before {
+  content: '?';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: var(--accent-purple-glow);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-purple);
+  flex-shrink: 0;
+}
+
+
+/* =======================================================
+   19. ANIMATED SCENIC BACKGROUND & CELESTIAL SYSTEM
+   Full-screen dynamic landscape:
+   - Deep sky with smooth 24h continuous gradient interpolation
+   - Star field for dusk/night/dawn
+   - Continuous Sun and Moon arcs behind landscape & chatbox
+   - SVG Lake scenery: mountains, hills, tranquil lake,
+     cozy lakeside house with glowing windows and chimney smoke,
+     dock with moored boat, trees, and lake reflections
+   - Floating Time Controller with 24h slider, presets, and live clock
+   ======================================================= */
+
+/* ── App wrapper stays above scenic background ── */
+.app-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2xl) var(--space-md) var(--space-xl);
+  overflow-x: hidden;
+}
+
+/* Reduce ambient blobs so scenic landscape shines through */
+.ambient-blob {
+  opacity: 0.05;
+  transition: opacity 1.5s ease;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BG SCENE CONTAINER
+   Fixed behind everything, non-blocking
+───────────────────────────────────────────────────────── */
+#bg-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SKY GRADIENT LAYER
+   Smooth continuous colors updated by JS animation engine
+───────────────────────────────────────────────────────── */
+#bg-sky {
+  position: absolute;
+  inset: 0;
+  background: var(--sky-gradient, linear-gradient(175deg, #02050E 0%, #050E23 40%, #0A1C3E 100%));
+  transition: background 0.15s linear;
+}
+
+/* ─────────────────────────────────────────────────────────
+   STAR FIELD (TWINKLING CONSTELLATIONS)
+───────────────────────────────────────────────────────── */
+#bg-stars {
+  position: absolute;
+  inset: 0;
+  opacity: var(--star-opacity, 1);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+  animation: starTwinkle var(--twinkle-dur, 3s) ease-in-out infinite;
+  animation-delay: var(--twinkle-delay, 0s);
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: var(--star-opacity, 0.85); transform: scale(1); }
+  50%      { opacity: 0.22;                      transform: scale(0.6); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   SUN ELEMENT — Realistic Photorealistic Solar Engine
+   Natural radiant corona, intense white-hot core,
+   ambient atmospheric scattering & delicate optical glare
+───────────────────────────────────────────────────────── */
+#bg-sun {
+  position: absolute;
+  left: var(--sun-x, 50%);
+  top: var(--sun-y, 20%);
+  width: 130px;
+  height: 130px;
+  margin-left: -65px;
+  margin-top: -65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: var(--sun-opacity, 0);
+  transform: scale(var(--sun-scale, 1));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ambient atmospheric light scattering that blends softly into the sky */
+.sun-ambient-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--sun-ambient-color, rgba(255, 240, 160, 0.42)) 0%,
+    var(--sun-ambient-fade, rgba(255, 190, 60, 0.16)) 42%,
+    transparent 72%
+  );
+  filter: blur(28px);
+  animation: solarPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes solarPulse {
+  0%   { transform: scale(0.96); opacity: 0.88; }
+  100% { transform: scale(1.06); opacity: 1; }
+}
+
+/* Soft radiant solar corona */
+.sun-corona {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.85) 0%,
+    var(--sun-corona-color, rgba(255, 225, 110, 0.55)) 38%,
+    transparent 72%
+  );
+  filter: blur(10px);
+  box-shadow: 0 0 65px 25px var(--sun-halo-color, rgba(255, 210, 70, 0.45));
+}
+
+/* Delicate optical glare streaks (photographic lens diffraction) */
+.sun-glare-horizontal {
+  position: absolute;
+  width: 250px;
+  height: 3px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  filter: blur(1.5px);
+  opacity: var(--sun-glare-opacity, 0.7);
+}
+
+.sun-glare-diagonal {
+  position: absolute;
+  width: 190px;
+  height: 2.5px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 250, 220, 0.5) 50%,
+    transparent 100%
+  );
+  filter: blur(1.5px);
+  transform: rotate(45deg);
+  opacity: var(--sun-glare-opacity, 0.5);
+}
+
+/* Realistic intense solar core: blinding white-hot center to radiant gold */
+.sun-core {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: var(
+    --sun-core-bg,
+    radial-gradient(
+      circle at 48% 48%,
+      #FFFFFF 0%,
+      #FFFFF2 20%,
+      #FFF7C8 45%,
+      #FFD24D 75%,
+      #FFA200 100%
+    )
+  );
+  box-shadow:
+    0 0 25px 8px #FFFFFF,
+    0 0 50px 18px var(--sun-glow-1, rgba(255, 235, 120, 0.95)),
+    0 0 95px 35px var(--sun-glow-2, rgba(255, 175, 40, 0.55)),
+    0 0 150px 55px var(--sun-glow-3, rgba(255, 120, 0, 0.25));
+  transition: box-shadow 0.5s ease;
+}
+
+/* ─────────────────────────────────────────────────────────
+   REVOLVING SOLAR CONNECTOR ENGINE (Active during query processing)
+   Sun spins as the central AI nexus with revolving orbital rings,
+   rotating diffraction spikes, and a radiant beam connecting to the chatbox
+───────────────────────────────────────────────────────── */
+#bg-sun.processing-active {
+  opacity: 1 !important;
+  z-index: 12;
+  transform: scale(calc(var(--sun-scale, 1) * 1.15));
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fast continuous spin on solar glare spikes */
+#bg-sun.processing-active .sun-glare-horizontal {
+  opacity: 1;
+  width: 330px;
+  height: 4px;
+  animation: sunRevolveGlaze 3.2s linear infinite;
+}
+
+#bg-sun.processing-active .sun-glare-diagonal {
+  opacity: 0.95;
+  width: 270px;
+  height: 3.5px;
+  animation: sunRevolveGlazeRev 4.2s linear infinite;
+}
+
+#bg-sun.processing-active .sun-corona {
+  box-shadow:
+    0 0 95px 35px var(--sun-halo-color, rgba(255, 210, 70, 0.7)),
+    0 0 150px 60px rgba(67, 120, 255, 0.35);
+  animation: coronaConnectorPulse 1.2s ease-in-out infinite alternate;
+}
+
+#bg-sun.processing-active .sun-core {
+  box-shadow:
+    0 0 35px 12px #FFFFFF,
+    0 0 75px 30px rgba(255, 215, 60, 0.95),
+    0 0 120px 50px rgba(67, 120, 255, 0.65);
+  animation: sunCoreConnectorPulse 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes sunRevolveGlaze {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes sunRevolveGlazeRev {
+  from { transform: rotate(45deg); }
+  to   { transform: rotate(-315deg); }
+}
+
+@keyframes coronaConnectorPulse {
+  0%   { transform: scale(0.97); opacity: 0.85; }
+  100% { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes sunCoreConnectorPulse {
+  0%   { transform: scale(0.98); }
+  100% { transform: scale(1.05); }
+}
+
+/* Revolving Celestial Connector Rings */
+.sun-connector-rings {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.65);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#bg-sun.processing-active .sun-connector-rings {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Outer orbital gyro-ring */
+.connector-ring.ring-outer {
+  position: absolute;
+  width: 246px;
+  height: 246px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 235, 120, 0.7);
+  box-shadow: 0 0 24px rgba(255, 215, 0, 0.3);
+  animation: ringRevolveCW 4.5s linear infinite;
+}
+
+/* Middle counter-rotating ring */
+.connector-ring.ring-middle {
+  position: absolute;
+  width: 178px;
+  height: 178px;
+  border-radius: 50%;
+  border: 1.5px dotted rgba(147, 197, 253, 0.85);
+  box-shadow: 0 0 18px rgba(67, 120, 255, 0.35);
+  animation: ringRevolveCCW 2.8s linear infinite;
+}
+
+/* Inner high-energy ring */
+.connector-ring.ring-inner {
+  position: absolute;
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.3);
+  animation: ringRevolveCW 1.8s linear infinite;
+}
+
+/* Orbiting energy nodes on outer ring */
+.orbit-node {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px 3px #FBBF24, 0 0 20px 6px rgba(255, 180, 0, 0.8);
+  top: -4.5px;
+  left: 50%;
+  margin-left: -4.5px;
+}
+
+.orbit-node.node-2 {
+  top: auto;
+  bottom: 25px;
+  left: 20px;
+  box-shadow: 0 0 10px 3px #60A5FA, 0 0 20px 6px rgba(67, 120, 255, 0.8);
+}
+
+.orbit-node.node-3 {
+  top: auto;
+  bottom: 25px;
+  left: auto;
+  right: 20px;
+  box-shadow: 0 0 10px 3px #34D399, 0 0 20px 6px rgba(52, 211, 153, 0.8);
+}
+
+/* Sparks on middle ring */
+.orbit-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 8px 2px #60A5FA;
+  top: 15px;
+  left: 25px;
+}
+
+.orbit-spark.spark-2 {
+  top: auto;
+  bottom: 15px;
+  left: auto;
+  right: 25px;
+}
+
+@keyframes ringRevolveCW {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ringRevolveCCW {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   SOLAR CONNECTOR SVG BEAM
+   Energetic conduit arcing from chatbox to revolving sun
+───────────────────────────────────────────────────────── */
+.solar-connector-svg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.solar-connector-svg.active {
+  opacity: 1;
+}
+
+.connector-beam-glow {
+  stroke: url(#connector-beam-grad);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  opacity: 0.6;
+  filter: url(#beam-glow);
+  animation: beamPulseGlow 1.2s ease-in-out infinite alternate;
+}
+
+.connector-beam-core {
+  stroke: #FFFFFF;
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 12 8;
+  animation: beamCoreStream 0.45s linear infinite;
+  filter: drop-shadow(0 0 6px #60A5FA);
+}
+
+@keyframes beamPulseGlow {
+  0%   { stroke-width: 6px; opacity: 0.45; }
+  100% { stroke-width: 10px; opacity: 0.75; }
+}
+
+@keyframes beamCoreStream {
+  from { stroke-dashoffset: 40; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.connector-pulse-dot {
+  transition: opacity 0.3s ease;
+}
+
+/* Chatbox console active connector uplink styling */
+.lakeside-console.connector-uplink {
+  border-color: rgba(96, 165, 250, 0.75) !important;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(67, 120, 255, 0.55),
+    0 0 60px rgba(253, 224, 71, 0.25),
+    inset 0 0 20px rgba(96, 165, 250, 0.2) !important;
+  animation: consoleConnectorThrob 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes consoleConnectorThrob {
+  0%   { transform: translateY(-2px) scale(1); }
+  100% { transform: translateY(-4px) scale(1.008); }
+}
+
+.lakeside-console.connector-uplink .console-sparkle {
+  color: #FDE047;
+  filter: drop-shadow(0 0 10px #FBBF24);
+  animation: sparkleSpin 1s linear infinite;
+}
+
+@keyframes sparkleSpin {
+  from { transform: rotate(0deg) scale(1.2); }
+  to   { transform: rotate(360deg) scale(1.2); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOON ELEMENT — Continuous Arc
+   Sits behind landscape and chatbox
+───────────────────────────────────────────────────────── */
+#bg-moon {
+  position: absolute;
+  left: var(--moon-x, 70%);
+  top: var(--moon-y, 22%);
+  width: 110px;
+  height: 110px;
+  margin-left: -55px;
+  margin-top: -55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: var(--moon-opacity, 1);
+  transform: scale(var(--moon-scale, 1));
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.moon-halo {
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    0 0 45px 18px rgba(180, 215, 255, 0.22),
+    0 0 90px 40px rgba(140, 185, 255, 0.12);
+  animation: moonGlow 7s ease-in-out infinite alternate;
+}
+
+.moon-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 34%, #FCFBF5, #ECE8D0, #D2CCA2, #B0A87A);
+  box-shadow:
+    0 0 32px rgba(210, 230, 255, 0.8),
+    0 0 80px rgba(160, 195, 255, 0.45),
+    0 0 140px rgba(120, 165, 255, 0.2);
+  overflow: hidden;
+}
+
+.moon-core::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -24%;
+  width: 82%;
+  height: 82%;
+  border-radius: 50%;
+  background: #030818;
+  box-shadow: 0 0 16px 8px #030818;
+  opacity: var(--moon-crescent-opacity, 0.85);
+}
+
+.moon-crater {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.crater-a { width: 22px; height: 22px; top: 32%; left: 22%; }
+.crater-b { width: 14px; height: 14px; top: 56%; left: 45%; }
+.crater-c { width: 10px; height: 10px; top: 24%; left: 52%; }
+
+/* ─────────────────────────────────────────────────────────
+   SVG LANDSCAPE SCENE
+   Mountains, lake, shoreline, house, dock & trees
+   Positioned at bottom of viewport, in front of Sun/Moon
+───────────────────────────────────────────────────────── */
+#bg-landscape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 72vh;
+  min-height: 520px;
+  max-height: 840px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Razor-sharp alpine mountains */
+.sc-mtn-far {
+  fill: var(--sc-mtn-far, #070e1a);
+  stroke: var(--sc-mtn-far, #070e1a);
+  stroke-width: 0.5;
+}
+
+.sc-mtn-lit {
+  fill: var(--sc-mtn-lit, #1c2e4a);
+  stroke: var(--sc-mtn-lit, #1c2e4a);
+  stroke-width: 0.5;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.04));
+}
+
+.sc-mtn-shadow {
+  fill: var(--sc-mtn-shadow, #08121f);
+  stroke: var(--sc-mtn-shadow, #08121f);
+  stroke-width: 0.5;
+}
+
+.sc-mtn-mid {
+  fill: var(--sc-mtn, #0e1c2e);
+}
+
+.sc-snow {
+  fill: var(--sc-snow, rgba(235, 245, 255, 0.92));
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+}
+
+.sc-arete {
+  stroke: rgba(255, 255, 255, 0.22);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sc-hill {
+  fill: var(--sc-hill, #08161D);
+}
+
+/* Lake water & reflection */
+.sc-lake {
+  fill: var(--sc-lake, #071728);
+}
+
+.sc-shimmer {
+  stroke: var(--sc-shimmer, rgba(255, 255, 255, 0.35));
+  opacity: var(--lake-shimmer-opacity, 0.5);
+  animation: lakeShimmer 4s ease-in-out infinite alternate;
+}
+
+@keyframes lakeShimmer {
+  0%   { stroke-dashoffset: 0;   opacity: 0.3; }
+  50%  { stroke-dashoffset: 15;  opacity: 0.65; }
+  100% { stroke-dashoffset: -10; opacity: 0.4; }
+}
+
+/* Near shore & foliage */
+.sc-shore {
+  fill: var(--sc-shore, #0A141A);
+}
+
+.sc-tree {
+  fill: var(--sc-tree, #0B1C17);
+}
+
+.sc-tree-far {
+  opacity: 0.72;
+}
+
+.sc-trunk {
+  fill: var(--sc-trunk, #1A120A);
+}
+
+.sc-foreground {
+  fill: var(--sc-fore, #04090D);
+}
+
+/* Dock lantern glow */
+#sc-dock-lantern {
+  transition: opacity 0.5s ease, fill 0.5s ease;
+}
+
+/* Dock & Boat */
+.sc-dock {
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.6));
+}
+
+.d-post, .d-plank {
+  fill: #1F1711;
+}
+
+.d-boat {
+  fill: #2E2218;
+}
+
+.d-mast {
+  fill: #3D2B1E;
+}
+
+.sc-reflections {
+  opacity: var(--refl-opacity, 0.25);
+}
+
+/* ─────────────────────────────────────────────────────────
+   FLOATING TIME CONTROLLER (Clean & Compact Pill)
+   Clean preset selector: Dawn, Morning, Noon, Sunset, Night
+───────────────────────────────────────────────────────── */
+#time-ctrl {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 100;
+  width: auto;
+  min-width: 290px;
+  max-width: 340px;
+  user-select: none;
+  font-family: var(--font-family);
+}
+
+.tc-glass {
+  background: rgba(14, 18, 28, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 10px 14px 11px;
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(108, 142, 245, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.tc-glass:hover {
+  border-color: rgba(108, 142, 245, 0.35);
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.6),
+    0 0 28px rgba(108, 142, 245, 0.22);
+}
+
+.tc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.tc-clock {
+  font-size: 13px;
+  font-weight: 700;
+  color: #F0F2FA;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: baseline;
+  font-variant-numeric: tabular-nums;
+}
+
+.tc-sep {
+  animation: blinkSep 1s step-start infinite;
+  margin: 0 1px;
+  color: var(--brand-primary);
+}
+
+@keyframes blinkSep {
+  50% { opacity: 0.3; }
+}
+
+#tc-ampm {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: 2px;
+  letter-spacing: 0.05em;
+}
+
+.tc-phase {
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  background: rgba(108, 142, 245, 0.14);
+  border: 1px solid rgba(108, 142, 245, 0.28);
+  border-radius: 9999px;
+  color: #e2e8f0;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.tc-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #a0aec0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tc-live:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.tc-live.active {
+  background: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+}
+
+.tc-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #718096;
+  transition: background 0.2s ease;
+}
+
+.tc-live.active .tc-live-dot {
+  background: #34d399;
+  box-shadow: 0 0 6px #34d399;
+  animation: statusPulse 1.8s ease-in-out infinite;
+}
+
+.tc-presets {
+  display: flex;
+  gap: 3px;
+}
+
+.tc-btn {
+  flex: 1;
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.tc-btn:hover {
+  background: rgba(108, 142, 245, 0.22);
+  border-color: rgba(108, 142, 245, 0.5);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.tc-btn.active {
+  background: linear-gradient(135deg, rgba(108,142,245,0.35), rgba(167,139,250,0.35));
+  border-color: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 12px rgba(108, 142, 245, 0.35);
+}
+
+/* ─────────────────────────────────────────────────────────
+   CHATBOX PERCHED ON THE LAKE HOUSE — Glass & Lighting
+───────────────────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.lakeside-console {
+  background: rgba(12, 17, 28, 0.55);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-2xl);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(108, 142, 245, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.panel-card {
+  background: rgba(14, 18, 28, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ─────────────────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────────────────── */
+@keyframes raysRotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes moonGlow {
+  0%   { box-shadow: 0 0 40px 18px rgba(180,210,255,0.18), 0 0 80px 35px rgba(150,190,255,0.10); }
+  100% { box-shadow: 0 0 55px 25px rgba(180,210,255,0.28), 0 0 110px 50px rgba(150,190,255,0.16); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN (SAMSUNG GALAXY & MOBILE OPTIMIZED)
+───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #time-ctrl {
+    position: static;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto var(--space-md);
+  }
+
+  #bg-sun  { width: 95px; height: 95px; margin-left: -47px; margin-top: -47px; }
+  #bg-moon { width: 85px; height: 85px; margin-left: -42px; margin-top: -42px; }
+
+  #bg-landscape {
+    height: 48vh;
+    min-height: 290px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-wrapper {
+    padding: 10px 12px 24px;
+  }
+
+  #bg-sun  { width: 75px; height: 75px; margin-left: -37px; margin-top: -37px; }
+  #bg-moon { width: 68px; height: 68px; margin-left: -34px; margin-top: -34px; }
+
+  #bg-landscape {
+    height: 52vh;
+    min-height: 320px;
+  }
+
+  #time-ctrl {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    margin: 6px auto 14px;
+    z-index: 50;
+  }
+
+  .tc-glass {
+    padding: 7px 10px;
+    gap: 6px;
+    border-radius: 14px;
+  }
+
+  .tc-clock {
+    font-size: 12px;
+  }
+
+  .tc-phase {
+    font-size: 8.5px;
+    padding: 1.5px 6px;
+  }
+
+  .tc-live {
+    font-size: 8.5px;
+    padding: 1.5px 6px;
+  }
+
+  .tc-presets {
+    gap: 3px;
+  }
+
+  .tc-btn {
+    padding: 3px 5px;
+    font-size: 9px;
+    border-radius: 5px;
+  }
+
+  /* Header & Samsung Brand Title */
+  .header-section {
+    gap: 4px;
+    padding-bottom: 0;
+  }
+
+  .hero-title.samsung-logo-type {
+    font-size: clamp(19px, 5.4vw, 24px);
+    letter-spacing: 0.06em;
+    column-gap: 0.35em;
+  }
+
+  .hero-subtitle {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Lakeside Bottom Console */
+  .container {
+    gap: 12px;
+  }
+
+  .lakeside-console {
+    padding: 10px 12px 9px;
+    border-radius: 18px;
+    bottom: 8px;
+  }
+
+  .console-prompt-wrap {
+    gap: 8px;
+  }
+
+  .console-sparkle {
+    width: 22px;
+    height: 22px;
+  }
+
+  .console-sparkle svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .issue-input {
+    font-size: 13.5px;
+    min-height: 36px;
+    padding: 4px 0;
+  }
+
+  .submit-btn.send-orb {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+
+  .console-footer {
+    padding-top: 8px;
+    margin-top: 4px;
+    gap: 8px;
+  }
+
+  .example-chips {
+    gap: 4px;
+  }
+
+  .chip-label {
+    display: none; /* Hide label so chips easily fit in single row on 412px Galaxy */
+  }
+
+  .chip {
+    font-size: 9.5px;
+    padding: 2px 7px;
+  }
+
+  .char-count {
+    font-size: 9.5px;
+  }
+
+  /* Diagnostic Output Panels */
+  .output-panel {
+    padding: 14px 12px 16px;
+    border-radius: 16px;
+  }
+
+  .panel-header {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .panel-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .panel-icon-wrap svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .panel-title {
+    font-size: 14.5px;
+  }
+
+  .panel-subtitle {
+    font-size: 10.5px;
+  }
+
+  .panel-badge {
+    font-size: 9.5px;
+    padding: 2px 7px;
+  }
+
+  .intent-chip {
+    padding: 10px 12px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .intent-label {
+    font-size: 13px;
+  }
+
+  .intent-confidence {
+    font-size: 12px;
+  }
+
+  /* XAI Grid on Mobile */
+  .xai-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .xai-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  /* Step Cards */
+  .step-card {
+    padding: 12px;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .step-num-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .step-title {
+    font-size: 13px;
+  }
+
+  .step-desc {
+    font-size: 11.5px;
+  }
+
+  .step-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .step-done-btn, .step-deep-link {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .feedback-buttons {
+    gap: 8px;
+  }
+
+  .feedback-btn {
+    padding: 6px 14px;
+    font-size: 11.5px;
+  }
+}
+
+/* ================================================================
+   BACKEND INTEGRATION � NEW CLASSES
+   ================================================================ */
+
+.step-item.is-critical { border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.03); position: relative; }
+.step-item.is-critical::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,#EF4444,#DC2626); border-radius:3px 0 0 3px; }
+.step-item.is-critical:hover { border-color: rgba(239,68,68,0.45); background: rgba(239,68,68,0.06); }
+
+.step-badge.auto { background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.35); color: #34D399; }
+.step-badge.manual { background: rgba(108,142,245,0.15); border: 1px solid rgba(108,142,245,0.35); color: var(--accent-blue); }
+.step-badge.critical { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: #F87171; }
+
+.step-substeps-list { margin: 6px 0 4px 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.step-substep { font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
+
+.validation-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); border-radius: 20px; font-size: 11px; color: #FBBF24; margin-top: 4px; width: fit-content; }
+.validation-pill code { font-family: monospace; font-size: 10.5px; background: rgba(251,191,36,0.12); padding: 1px 4px; border-radius: 4px; color: #FDE68A; }
+
+.meta-badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); }
+.meta-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.02em; border: 1px solid; }
+.meta-badge.cache-hit { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); color: #34D399; }
+.meta-badge.cache-miss { background: rgba(108,142,245,0.1); border-color: rgba(108,142,245,0.25); color: var(--accent-blue); }
+.meta-badge.latency { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); color: var(--text-muted); }
+.meta-badge.model { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.25); color: #A78BFA; }
+.meta-badge.fallback { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.25); color: #FBBF24; }
+
+.toast-notification { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(20,25,40,0.92); backdrop-filter: blur(16px); border: 1px solid rgba(108,142,245,0.4); border-radius: 12px; padding: 10px 18px; font-size: 13px; font-weight: 500; color: #E2E8F0; box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 9999; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; white-space: nowrap; max-width: 90vw; overflow: hidden; text-overflow: ellipsis; }
+.toast-notification.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.emulator-nav-link { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; transition: all 0.18s ease; }
+.emulator-nav-link:hover { color: #fff; border-color: rgba(108,142,245,0.4); background: rgba(108,142,245,0.08); }

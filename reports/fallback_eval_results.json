@@ -8,8 +8,8 @@
   "correct_count": 74,
   "correctness_rate": 74.0,
   "answerable_accuracy": 70.66666666666667,
-  "fallback_p50_ms": 23.745299999063718,
-  "fallback_p95_ms": 259.8874849991262,
+  "fallback_p50_ms": 24.57239999785088,
+  "fallback_p95_ms": 253.250265000861,
   "results": [
     {
       "id": "row_1",
@@ -18,7 +18,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.408800000324845
+      "latency_ms": 8.626999999250984
     },
     {
       "id": "row_1",
@@ -27,7 +27,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.085899997240631
+      "latency_ms": 7.734399998298613
     },
     {
       "id": "row_1",
@@ -36,7 +36,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.26579999900423
+      "latency_ms": 9.751199999300297
     },
     {
       "id": "row_1",
@@ -45,7 +45,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 15.32750000114902
+      "latency_ms": 11.929800002690172
     },
     {
       "id": "row_1",
@@ -54,7 +54,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 9.011399997689296
+      "latency_ms": 8.407099998294143
     },
     {
       "id": "row_2",
@@ -63,7 +63,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.502399999997579
+      "latency_ms": 8.069699997577118
     },
     {
       "id": "row_2",
@@ -72,7 +72,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 10.317400003259536
+      "latency_ms": 7.744300000922522
     },
     {
       "id": "row_2",
@@ -81,7 +81,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.825099997717189
+      "latency_ms": 7.5523999985307455
     },
     {
       "id": "row_2",
@@ -90,7 +90,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.311399997182889
+      "latency_ms": 8.388899997953558
     },
     {
       "id": "row_2",
@@ -99,7 +99,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 14.380600001459243
+      "latency_ms": 15.455400000064401
     },
     {
       "id": "row_3",
@@ -108,7 +108,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.692799998243572
+      "latency_ms": 10.215499998594169
     },
     {
       "id": "row_3",
@@ -117,7 +117,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.554499999969266
+      "latency_ms": 7.171000001108041
     },
     {
       "id": "row_3",
@@ -126,7 +126,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.739999997487757
+      "latency_ms": 6.797900001402013
     },
     {
       "id": "row_3",
@@ -135,7 +135,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.556400000088615
+      "latency_ms": 7.915400001365924
     },
     {
       "id": "row_3",
@@ -144,7 +144,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 78.47119999860297
+      "latency_ms": 91.9915000013134
     },
     {
       "id": "row_4",
@@ -153,7 +153,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 170.7289000005403
+      "latency_ms": 178.22180000075605
     },
     {
       "id": "row_4",
@@ -162,7 +162,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.098300000507152
+      "latency_ms": 7.840499998565065
     },
     {
       "id": "row_4",
@@ -171,7 +171,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.280099998955848
+      "latency_ms": 7.072500000504078
     },
     {
       "id": "row_4",
@@ -180,7 +180,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 174.01479999898584
+      "latency_ms": 172.91219999970053
     },
     {
       "id": "row_4",
@@ -189,7 +189,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 10.454100000060862
+      "latency_ms": 8.110300001135329
     },
     {
       "id": "row_5",
@@ -198,7 +198,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 57.21149999953923
+      "latency_ms": 57.14119999902323
     },
     {
       "id": "row_5",
@@ -207,7 +207,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.28499999968335
+      "latency_ms": 7.6359999984561
     },
     {
       "id": "row_5",
@@ -216,7 +216,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 6.9088000018382445
+      "latency_ms": 6.84220000039204
     },
     {
       "id": "row_5",
@@ -225,7 +225,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.780500000080792
+      "latency_ms": 7.494499997847015
     },
     {
       "id": "row_5",
@@ -234,7 +234,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.603500002005603
+      "latency_ms": 7.797300000675023
     },
     {
       "id": "row_7",
@@ -243,7 +243,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 15.545700000075158
+      "latency_ms": 17.360300000291318
     },
     {
       "id": "row_7",
@@ -252,7 +252,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 7.390000002487795
+      "latency_ms": 7.487399998353794
     },
     {
       "id": "row_7",
@@ -261,7 +261,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 7.225400000606896
+      "latency_ms": 7.067400001687929
     },
     {
       "id": "row_7",
@@ -270,7 +270,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 17.036599998391466
+      "latency_ms": 19.673900002089795
     },
     {
       "id": "row_7",
@@ -279,7 +279,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 261.0196999994514
+      "latency_ms": 243.62750000000233
     },
     {
       "id": "row_8",
@@ -288,7 +288,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 16.04409999708878
+      "latency_ms": 19.804899999144254
     },
     {
       "id": "row_8",
@@ -297,7 +297,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 7.0793999984744005
+      "latency_ms": 7.481699998606928
     },
     {
       "id": "row_8",
@@ -306,7 +306,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 7.270900001458358
+      "latency_ms": 7.367400001385249
     },
     {
       "id": "row_8",
@@ -315,7 +315,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 9.076199999981327
+      "latency_ms": 8.540099999663653
     },
     {
       "id": "row_8",
@@ -324,7 +324,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 14.881799997965572
+      "latency_ms": 15.5596999975387
     },
     {
       "id": "row_9",
@@ -333,7 +333,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 253.4715999972832
+      "latency_ms": 254.9484000010125
     },
     {
       "id": "row_9",
@@ -342,7 +342,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.656100002350286
+      "latency_ms": 7.3924000025726855
     },
     {
       "id": "row_9",
@@ -351,7 +351,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 7.174899998062756
+      "latency_ms": 7.385400000202935
     },
     {
       "id": "row_9",
@@ -360,7 +360,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 8.119199999782722
+      "latency_ms": 8.024200000363635
     },
     {
       "id": "row_9",
@@ -369,7 +369,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 275.1243999991857
+      "latency_ms": 270.4112999999779
     },
     {
       "id": "row_10",
@@ -378,7 +378,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 88.83260000220616
+      "latency_ms": 98.03959999771905
     },
     {
       "id": "row_10",
@@ -387,7 +387,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 7.2725999998510815
+      "latency_ms": 8.128600002237363
     },
     {
       "id": "row_10",
@@ -396,7 +396,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 46.36770000070101
+      "latency_ms": 46.455299998342525
     },
     {
       "id": "row_10",
@@ -405,7 +405,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 8.091600000625476
+      "latency_ms": 7.932799999252893
     },
     {
       "id": "row_10",
@@ -414,7 +414,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": false,
-      "latency_ms": 168.5484000008728
+      "latency_ms": 173.45379999824218
     },
     {
       "id": "row_11",
@@ -423,7 +423,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 25.632799999584677
+      "latency_ms": 28.340099997876678
     },
     {
       "id": "row_11",
@@ -432,7 +432,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.895400001871167
+      "latency_ms": 12.516899998445297
     },
     {
       "id": "row_11",
@@ -441,7 +441,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.731300000159536
+      "latency_ms": 12.47019999937038
     },
     {
       "id": "row_11",
@@ -450,7 +450,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.159100001648767
+      "latency_ms": 9.51350000104867
     },
     {
       "id": "row_11",
@@ -459,7 +459,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 21.85779999854276
+      "latency_ms": 20.804699997825082
     },
     {
       "id": "row_12",
@@ -468,7 +468,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 16.29490000050282
+      "latency_ms": 17.263699999602977
     },
     {
       "id": "row_12",
@@ -477,7 +477,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 8.015399998839712
+      "latency_ms": 7.195299996965332
     },
     {
       "id": "row_12",
@@ -486,7 +486,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 19.92420000169659
+      "latency_ms": 13.347600000997772
     },
     {
       "id": "row_12",
@@ -495,7 +495,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 16.22470000074827
+      "latency_ms": 15.992199998436263
     },
     {
       "id": "row_12",
@@ -504,7 +504,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 17.01619999948889
+      "latency_ms": 15.7653999995091
     },
     {
       "id": "row_13",
@@ -513,7 +513,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 15.82090000010794
+      "latency_ms": 15.495799998461735
     },
     {
       "id": "row_13",
@@ -522,7 +522,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 9.19400000202586
+      "latency_ms": 7.368200000200886
     },
     {
       "id": "row_13",
@@ -531,7 +531,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.1457000012742355
+      "latency_ms": 6.552399998327019
     },
     {
       "id": "row_13",
@@ -540,7 +540,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.389700000407174
+      "latency_ms": 7.680599999730475
     },
     {
       "id": "row_13",
@@ -549,7 +549,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.899899999756599
+      "latency_ms": 7.534999997005798
     },
     {
       "id": "row_14",
@@ -558,7 +558,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 80.67319999827305
+      "latency_ms": 78.62269999895943
     },
     {
       "id": "row_14",
@@ -567,7 +567,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.063299999572337
+      "latency_ms": 7.143399998312816
     },
     {
       "id": "row_14",
@@ -576,7 +576,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 68.62750000072992
+      "latency_ms": 59.04589999772725
     },
     {
       "id": "row_14",
@@ -585,7 +585,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.191799999418436
+      "latency_ms": 7.796399997459957
     },
     {
       "id": "row_14",
@@ -594,7 +594,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.248999998613726
+      "latency_ms": 7.8055000012682285
     },
     {
       "id": "row_15",
@@ -603,7 +603,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 131.1245999968378
+      "latency_ms": 123.33750000107102
     },
     {
       "id": "row_15",
@@ -612,7 +612,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 14.236400002118899
+      "latency_ms": 13.76160000290838
     },
     {
       "id": "row_15",
@@ -621,7 +621,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 14.351699999679113
+      "latency_ms": 13.29000000259839
     },
     {
       "id": "row_15",
@@ -630,7 +630,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 18.041100000118604
+      "latency_ms": 19.227000000682892
     },
     {
       "id": "row_15",
@@ -639,7 +639,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 15.8235999988392
+      "latency_ms": 16.16469999862602
     },
     {
       "id": "row_16",
@@ -648,7 +648,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 168.1637999972736
+      "latency_ms": 171.5863999997964
     },
     {
       "id": "row_16",
@@ -657,7 +657,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.191000000806525
+      "latency_ms": 12.403200002154335
     },
     {
       "id": "row_16",
@@ -666,7 +666,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 155.7801000017207
+      "latency_ms": 144.69589999862364
     },
     {
       "id": "row_16",
@@ -675,7 +675,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 13.000999999349006
+      "latency_ms": 8.539400001609465
     },
     {
       "id": "row_16",
@@ -684,7 +684,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 169.57109999930253
+      "latency_ms": 161.94389999873238
     },
     {
       "id": "row_17",
@@ -693,7 +693,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 16.345000000001164
+      "latency_ms": 20.06500000061351
     },
     {
       "id": "row_17",
@@ -702,7 +702,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 15.626100001099985
+      "latency_ms": 16.050100002757972
     },
     {
       "id": "row_17",
@@ -711,7 +711,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 14.206899999408051
+      "latency_ms": 15.406300000904594
     },
     {
       "id": "row_17",
@@ -720,7 +720,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 18.7727000011364
+      "latency_ms": 18.827299998520175
     },
     {
       "id": "row_17",
@@ -729,7 +729,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 16.098799998871982
+      "latency_ms": 17.939299999852665
     },
     {
       "id": "row_19",
@@ -738,7 +738,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 76.48160000098869
+      "latency_ms": 78.98060000297846
     },
     {
       "id": "row_19",
@@ -747,7 +747,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.478899999114219
+      "latency_ms": 7.925500001874752
     },
     {
       "id": "row_19",
@@ -756,7 +756,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 6.360400002449751
+      "latency_ms": 7.031599998299498
     },
     {
       "id": "row_19",
@@ -765,7 +765,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.502399999793852
+      "latency_ms": 8.515900000929832
     },
     {
       "id": "row_19",
@@ -774,7 +774,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.407100001932122
+      "latency_ms": 7.919299998320639
     },
     {
       "id": "row_20",
@@ -783,7 +783,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 8.196299997507595
+      "latency_ms": 11.191100002179155
     },
     {
       "id": "row_20",
@@ -792,7 +792,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 7.092000003467547
+      "latency_ms": 9.5402999977523
     },
     {
       "id": "row_20",
@@ -801,7 +801,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 6.598599997232668
+      "latency_ms": 9.07309999820427
     },
     {
       "id": "row_20",
@@ -810,7 +810,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": true,
-      "latency_ms": 16.50339999832795
+      "latency_ms": 17.356899999867892
     },
     {
       "id": "row_20",
@@ -819,7 +819,7 @@
       "cache_hit": true,
       "fallback": "no_match",
       "is_correct": true,
-      "latency_ms": 10.951100000966107
+      "latency_ms": 8.041599998250604
     },
     {
       "id": "row_21",
@@ -828,7 +828,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 9.667599999374943
+      "latency_ms": 8.334000001923414
     },
     {
       "id": "row_21",
@@ -837,7 +837,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.525799999915762
+      "latency_ms": 7.638499999302439
     },
     {
       "id": "row_21",
@@ -846,7 +846,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 7.313400001294212
+      "latency_ms": 7.451500001479872
     },
     {
       "id": "row_21",
@@ -855,7 +855,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 290.3909999986354
+      "latency_ms": 272.8784999999334
     },
     {
       "id": "row_21",
@@ -864,7 +864,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 11.124199998448603
+      "latency_ms": 8.728900000278372
     },
     {
       "id": "row_22",
@@ -873,7 +873,7 @@
       "cache_hit": false,
       "fallback": "no_siis_context",
       "is_correct": false,
-      "latency_ms": 16.777799999545095
+      "latency_ms": 17.66459999998915
     },
     {
       "id": "row_22",
@@ -882,7 +882,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 165.30559999955585
+      "latency_ms": 163.0853999995452
     },
     {
       "id": "row_22",
@@ -891,7 +891,7 @@
       "cache_hit": true,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 8.686400000442518
+      "latency_ms": 11.32069999948726
     },
     {
       "id": "row_22",
@@ -900,7 +900,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 190.98829999711597
+      "latency_ms": 166.55370000080438
     },
     {
       "id": "row_22",
@@ -909,7 +909,7 @@
       "cache_hit": false,
       "fallback": null,
       "is_correct": true,
-      "latency_ms": 250.23529999816674
+      "latency_ms": 156.81369999947492
     }
   ]
 }

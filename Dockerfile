@@ -24,15 +24,14 @@ COPY rules/ rules/
 COPY data/ data/
 COPY models/ models/
 COPY cache/ cache/
-COPY eval/ eval/
-COPY scripts/ scripts/
+COPY frontend/ frontend/
 
 # Expose API port
 EXPOSE 8000
 
 # Health check verifies the pipeline is prewarmed and ready
-HEALTHCHECK --interval=10s --timeout=5s --start-period=20s --retries=3 \
+HEALTHCHECK --interval=15s --timeout=10s --start-period=60s --retries=5 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-# Start Uvicorn server
+# Start Uvicorn — binds 0.0.0.0 so cloud platforms can route traffic in
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

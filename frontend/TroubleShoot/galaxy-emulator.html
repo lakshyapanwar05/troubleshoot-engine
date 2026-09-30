@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samsung Galaxy Device Emulator – Smart Troubleshooter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-studio: #080A10;
+      --bg-surface: #0E121D;
+      --bg-surface-elevated: #161C2C;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(108, 142, 245, 0.35);
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --brand-blue: #4378FF;
+      --brand-accent: #6C8EF5;
+      
+      /* Galaxy Phone Frame Measurements (Galaxy S24 Ultra default: 412x915) */
+      --phone-w: 412px;
+      --phone-h: 915px;
+      --phone-scale: 0.88;
+      --phone-border-radius: 46px;
+      --phone-bezel: 10px;
+      --titanium-color: #262930;
+      --titanium-highlight: #4E525E;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 50% 20%, #151A28 0%, #080A10 75%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Studio Navigation Bar */
+    .studio-bar {
+      height: 60px;
+      padding: 0 24px;
+      background: rgba(10, 14, 22, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .studio-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .samsung-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: #fff;
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .samsung-badge span {
+      color: var(--brand-accent);
+    }
+
+    .studio-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .studio-title b {
+      color: #fff;
+    }
+
+    .studio-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tool-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .tool-btn:hover {
+      background: rgba(108, 142, 245, 0.18);
+      border-color: var(--brand-accent);
+      color: #fff;
+    }
+
+    .tool-btn.active {
+      background: var(--brand-blue);
+      border-color: var(--brand-accent);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(67, 120, 255, 0.4);
+    }
+
+    /* Main Workbench Layout */
+    .workbench {
+      flex: 1;
+      display: flex;
+      padding: 24px;
+      gap: 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    /* Phone Emulator Stage */
+    .emulator-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .stage-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stage-label .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       SAMSUNG GALAXY S24 ULTRA HARDWARE FRAME
+    ───────────────────────────────────────────────────────── */
+    .galaxy-chassis {
+      position: relative;
+      width: var(--phone-w);
+      height: var(--phone-h);
+      transform: scale(var(--phone-scale));
+      transform-origin: top center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-bottom: calc((var(--phone-h) * (var(--phone-scale) - 1)));
+    }
+
+    .galaxy-chassis.landscape {
+      width: var(--phone-h);
+      height: var(--phone-w);
+    }
+
+    /* Outer Titanium Bezel */
+    .galaxy-body {
+      position: absolute;
+      inset: calc(-1 * var(--phone-bezel));
+      border-radius: var(--phone-border-radius);
+      background: linear-gradient(145deg, #3A3E47 0%, #1E2026 30%, #16181D 70%, #2E323A 100%);
+      box-shadow:
+        0 25px 60px -10px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        inset 0 0 0 2px rgba(0, 0, 0, 0.8),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      pointer-events: none;
+    }
+
+    /* Metallic Chamfer Accent */
+    .galaxy-body::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: calc(var(--phone-border-radius) - 2px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #08090C;
+    }
+
+    /* Physical Buttons on Right Rail */
+    .hw-btn {
+      position: absolute;
+      right: calc(-1 * var(--phone-bezel) - 3.5px);
+      width: 4px;
+      background: linear-gradient(to right, #4A4F5B, #262930);
+      border-radius: 2px;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: transform 0.1s ease;
+      box-shadow: 1px 0 3px rgba(0,0,0,0.5);
+    }
+
+    .hw-btn:active {
+      transform: translateX(-1px);
+    }
+
+    .hw-vol-up {
+      top: 170px;
+      height: 48px;
+    }
+
+    .hw-vol-down {
+      top: 228px;
+      height: 48px;
+    }
+
+    .hw-power {
+      top: 310px;
+      height: 58px;
+    }
+
+    /* Screen Display Container */
+    .galaxy-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: calc(var(--phone-border-radius) - var(--phone-bezel));
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.9);
+      user-select: none;
+    }
+
+    /* Infinity-O Front Camera Notch */
+    .punch-hole {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #06080C;
+      border: 1px solid #1A1E26;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+      z-index: 50;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .punch-hole::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #1E3A8A 0%, #060913 70%);
+      opacity: 0.8;
+    }
+
+    /* Speaker Earpiece Slit at Very Top */
+    .speaker-slit {
+      position: absolute;
+      top: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 3px;
+      border-radius: 2px;
+      background: #11141A;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    /* Samsung One UI Status Bar */
+    .one-ui-status-bar {
+      height: 36px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 40;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .status-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-icon {
+      display: flex;
+      align-items: center;
+    }
+
+    .status-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* Embedded Iframe */
+    .screen-iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #0A0C12;
+    }
+
+    /* One UI Bottom Gesture Navigation Bar */
+    .one-ui-nav-bar {
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 40;
+      pointer-events: none;
+    }
+
+    .gesture-pill {
+      width: 108px;
+      height: 4px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    /* Screen Sleep Overlay (for power button) */
+    .screen-sleep-overlay {
+      position: absolute;
+      inset: 0;
+      background: #000;
+      z-index: 60;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .screen-sleep-overlay.asleep {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* One UI Volume HUD Indicator */
+    .volume-hud {
+      position: absolute;
+      right: 12px;
+      top: 200px;
+      width: 24px;
+      height: 90px;
+      background: rgba(20, 24, 34, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 55;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6px;
+      gap: 6px;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.2s ease;
+      pointer-events: none;
+    }
+
+    .volume-hud.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .vol-track {
+      flex: 1;
+      width: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .vol-level {
+      width: 100%;
+      height: 70%;
+      background: var(--brand-accent);
+      border-radius: 3px;
+      transition: height 0.1s ease;
+    }
+
+    /* Side Control Panel & Diagnostics */
+    .control-deck {
+      flex: 1;
+      max-width: 480px;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .deck-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .deck-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .device-opt {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .device-opt:hover {
+      border-color: var(--brand-accent);
+      background: rgba(108, 142, 245, 0.1);
+    }
+
+    .device-opt.selected {
+      border-color: var(--brand-blue);
+      background: rgba(67, 120, 255, 0.15);
+      box-shadow: 0 0 12px rgba(67, 120, 255, 0.2);
+    }
+
+    .device-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .device-specs {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Interactive Test Action Triggers */
+    .query-pill-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: var(--text-main);
+      font-size: 12.5px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .query-pill-btn:hover {
+      border-color: var(--brand-accent);
+      background: rgba(108, 142, 245, 0.12);
+      transform: translateX(4px);
+      color: #fff;
+    }
+
+    .query-pill-btn .action-tag {
+      font-size: 10.5px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(67, 120, 255, 0.2);
+      color: #93C5FD;
+      font-weight: 600;
+    }
+
+    /* Preset time buttons */
+    .time-deck-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      width: 100%;
+    }
+
+    .time-deck-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 8px 0;
+      color: var(--text-main);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .time-deck-btn:hover {
+      border-color: var(--brand-accent);
+      background: rgba(108, 142, 245, 0.2);
+      color: #fff;
+    }
+
+    .time-deck-btn.active {
+      background: var(--brand-blue);
+      color: #fff;
+      border-color: #60A5FA;
+    }
+
+    /* Scale selector */
+    .scale-selector {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .scale-btn {
+      flex: 1;
+      padding: 6px 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .scale-btn:hover {
+      color: #fff;
+    }
+
+    .scale-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Responsive Workbench */
+    @media (max-width: 1024px) {
+      .workbench {
+        flex-direction: column;
+        align-items: center;
+      }
+      .control-deck {
+        width: 100%;
+        max-width: var(--phone-w);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Studio Bar -->
+  <header class="studio-bar">
+    <div class="studio-brand">
+      <div class="samsung-badge">SΛMSUNG <span>GALAXY</span></div>
+      <div class="studio-title">Mobile Device Emulator Studio &bull; <b>Smart Troubleshooter</b></div>
+    </div>
+    <div class="studio-actions">
+      <button class="tool-btn" onclick="toggleOrientation()" id="orient-btn" title="Toggle Portrait/Landscape">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+          <path d="M12 18h.01"></path>
+        </svg>
+        Rotate
+      </button>
+      <button class="tool-btn" onclick="reloadFrame()" title="Reload App">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+        </svg>
+        Reload
+      </button>
+      <a href="index.html" target="_blank" class="tool-btn" title="Open full desktop view">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        Fullscreen
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Workbench Area -->
+  <main class="workbench">
+
+    <!-- Phone Emulator Stage -->
+    <div class="emulator-stage">
+      <div class="stage-label">
+        <span class="live-dot"></span>
+        <span id="current-device-label">Samsung Galaxy S24 Ultra &bull; 412 &times; 915 px</span>
+      </div>
+
+      <!-- Samsung Galaxy Hardware Chassis -->
+      <div class="galaxy-chassis" id="galaxy-chassis">
+        <!-- Titanium Bezel Body -->
+        <div class="galaxy-body"></div>
+
+        <!-- Hardware Buttons (Right Rail) -->
+        <div class="hw-btn hw-vol-up" onclick="triggerVolume(1)" title="Volume Up"></div>
+        <div class="hw-btn hw-vol-down" onclick="triggerVolume(-1)" title="Volume Down"></div>
+        <div class="hw-btn hw-power" onclick="toggleScreenPower()" title="Power / Lock"></div>
+
+        <!-- Phone Screen Glass -->
+        <div class="galaxy-screen">
+          <!-- Infinity-O Camera Notch & Speaker -->
+          <div class="speaker-slit"></div>
+          <div class="punch-hole"></div>
+
+          <!-- One UI Status Bar -->
+          <div class="one-ui-status-bar">
+            <div class="status-left">
+              <span id="oneui-clock">12:45</span>
+            </div>
+            <div class="status-right">
+              <!-- 5G Badge -->
+              <span class="status-icon" style="font-size: 10px; font-weight: 800; letter-spacing: 0.05em;">5G</span>
+              <!-- Signal Bars -->
+              <span class="status-icon">
+                <svg viewBox="0 0 24 24"><path d="M2 20h20L2 4v16z"/></svg>
+              </span>
+              <!-- Wi-Fi 6 -->
+              <span class="status-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9.47 2.01-12.73 5.27l1.42 1.41c2.9-2.9 6.9-4.68 11.31-4.68s8.41 1.78 11.31 4.68l1.42-1.41c-3.26-3.26-7.76-5.27-12.73-5.27zm0 6c-3.31 0-6.31 1.34-8.49 3.51l1.42 1.42c1.81-1.81 4.31-2.93 7.07-2.93s5.26 1.12 7.07 2.93l1.42-1.42c-2.18-2.17-5.18-3.51-8.49-3.51zm0 6c-1.66 0-3.16.67-4.24 1.76l4.24 4.24 4.24-4.24c-1.08-1.09-2.58-1.76-4.24-1.76z"/></svg>
+              </span>
+              <!-- Battery Indicator -->
+              <span class="status-icon" style="gap: 2px;">
+                <span style="font-size: 10px;">88%</span>
+                <svg viewBox="0 0 24 24"><path d="M16 20H8V6h8v14zm1-16h-2V2H9v2H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Interactive Live App Frame -->
+          <iframe
+            id="app-iframe"
+            class="screen-iframe"
+            src="index.html"
+            title="Smart Troubleshooter App"
+            allow="fullscreen"
+          ></iframe>
+
+          <!-- One UI Bottom Gesture Navigation Bar -->
+          <div class="one-ui-nav-bar">
+            <div class="gesture-pill"></div>
+          </div>
+
+          <!-- Volume HUD Display -->
+          <div class="volume-hud" id="volume-hud">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #94A3B8;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            </svg>
+            <div class="vol-track">
+              <div class="vol-level" id="vol-level" style="height: 70%;"></div>
+            </div>
+          </div>
+
+          <!-- Power Sleep Screen Lock Overlay -->
+          <div class="screen-sleep-overlay" id="sleep-overlay"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side Control Deck -->
+    <div class="control-deck">
+
+      <!-- Device Model Selection -->
+      <div class="deck-card">
+        <div class="deck-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+            <path d="M12 18h.01"></path>
+          </svg>
+          Galaxy Device Presets
+        </div>
+        <div class="device-grid">
+          <button class="device-opt selected" onclick="setDevice('s24ultra', 412, 915, 'Samsung Galaxy S24 Ultra', 46)">
+            <div class="device-name">Galaxy S24 Ultra</div>
+            <div class="device-specs">412 &times; 915 px &bull; 19.5:9</div>
+          </button>
+          <button class="device-opt" onclick="setDevice('s24', 360, 780, 'Samsung Galaxy S24', 42)">
+            <div class="device-name">Galaxy S24</div>
+            <div class="device-specs">360 &times; 780 px &bull; 19.5:9</div>
+          </button>
+          <button class="device-opt" onclick="setDevice('fold-cover', 376, 968, 'Galaxy Z Fold6 (Cover)', 36)">
+            <div class="device-name">Z Fold6 (Cover)</div>
+            <div class="device-specs">376 &times; 968 px &bull; 23:9</div>
+          </button>
+          <button class="device-opt" onclick="setDevice('fold-inner', 768, 960, 'Galaxy Z Fold6 (Inner)', 24)">
+            <div class="device-name">Z Fold6 (Unfolded)</div>
+            <div class="device-specs">768 &times; 960 px &bull; Tablet</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Zoom & Scale Controls -->
+      <div class="deck-card">
+        <div class="deck-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          Viewport Zoom Scale
+        </div>
+        <div class="scale-selector">
+          <button class="scale-btn" onclick="setScale(0.75, this)">75%</button>
+          <button class="scale-btn active" onclick="setScale(0.88, this)">88% (Default)</button>
+          <button class="scale-btn" onclick="setScale(1.0, this)">100% (1:1)</button>
+        </div>
+      </div>
+
+      <!-- Quick Issue Testing Triggers -->
+      <div class="deck-card">
+        <div class="deck-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+          </svg>
+          Simulate Troubleshooting Queries
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button class="query-pill-btn" onclick="injectQuery('Battery draining quickly during video calls and device gets warm')">
+            <span>Battery drain &amp; heating</span>
+            <span class="action-tag">Run Test</span>
+          </button>
+          <button class="query-pill-btn" onclick="injectQuery('Screen flickering intermittently after latest software update')">
+            <span>Screen flicker after update</span>
+            <span class="action-tag">Run Test</span>
+          </button>
+          <button class="query-pill-btn" onclick="injectQuery('Wi-Fi drops connection repeatedly on 5GHz network')">
+            <span>Wi-Fi connection drop</span>
+            <span class="action-tag">Run Test</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scenery Time of Day Sync -->
+      <div class="deck-card">
+        <div class="deck-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.07" x2="5.64" y2="17.65"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          Time-of-Day Quick Presets
+        </div>
+        <div class="time-deck-grid">
+          <button class="time-deck-btn" onclick="syncPreset(5.5, this)">Dawn</button>
+          <button class="time-deck-btn" onclick="syncPreset(9, this)">Morning</button>
+          <button class="time-deck-btn" onclick="syncPreset(12, this)">Noon</button>
+          <button class="time-deck-btn active" onclick="syncPreset(18.5, this)">Sunset</button>
+          <button class="time-deck-btn" onclick="syncPreset(22, this)">Night</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Live Clock for One UI Status Bar
+    function updateClock() {
+      const now = new Date();
+      let h = now.getHours();
+      let m = now.getMinutes();
+      m = m < 10 ? '0' + m : m;
+      document.getElementById('oneui-clock').textContent = `${h}:${m}`;
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
+
+    // Device Model Switcher
+    function setDevice(id, w, h, label, radius) {
+      document.documentElement.style.setProperty('--phone-w', w + 'px');
+      document.documentElement.style.setProperty('--phone-h', h + 'px');
+      document.documentElement.style.setProperty('--phone-border-radius', radius + 'px');
+      document.getElementById('current-device-label').textContent = `${label} • ${w} × ${h} px`;
+      
+      document.querySelectorAll('.device-opt').forEach(btn => btn.classList.remove('selected'));
+      event.currentTarget.classList.add('selected');
+    }
+
+    // Scale Switcher
+    function setScale(scale, btn) {
+      document.documentElement.style.setProperty('--phone-scale', scale);
+      document.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // Orientation Switcher
+    let isLandscape = false;
+    function toggleOrientation() {
+      isLandscape = !isLandscape;
+      const chassis = document.getElementById('galaxy-chassis');
+      const btn = document.getElementById('orient-btn');
+      if (isLandscape) {
+        chassis.classList.add('landscape');
+        btn.classList.add('active');
+      } else {
+        chassis.classList.remove('landscape');
+        btn.classList.remove('active');
+      }
+    }
+
+    // Reload Frame
+    function reloadFrame() {
+      const iframe = document.getElementById('app-iframe');
+      iframe.src = iframe.src;
+    }
+
+    // Hardware Power Toggle
+    let isScreenAsleep = false;
+    function toggleScreenPower() {
+      isScreenAsleep = !isScreenAsleep;
+      const overlay = document.getElementById('sleep-overlay');
+      if (isScreenAsleep) {
+        overlay.classList.add('asleep');
+      } else {
+        overlay.classList.remove('asleep');
+      }
+    }
+
+    // Hardware Volume Toggle
+    let currentVol = 70;
+    let volTimer = null;
+    function triggerVolume(delta) {
+      currentVol = Math.max(0, Math.min(100, currentVol + delta * 10));
+      document.getElementById('vol-level').style.height = currentVol + '%';
+      const hud = document.getElementById('volume-hud');
+      hud.classList.add('visible');
+      clearTimeout(volTimer);
+      volTimer = setTimeout(() => hud.classList.remove('visible'), 1600);
+    }
+
+    // Query Injection
+    function injectQuery(text) {
+      const iframe = document.getElementById('app-iframe');
+      try {
+        const input = iframe.contentWindow.document.getElementById('issue-input');
+        const submitBtn = iframe.contentWindow.document.getElementById('submit-btn');
+        if (input && submitBtn) {
+          input.value = text;
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+          submitBtn.click();
+        }
+      } catch (err) {
+        console.warn('Cross-origin check:', err);
+      }
+    }
+
+    // Time preset sync
+    function syncPreset(hour, btn) {
+      document.querySelectorAll('.time-deck-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const iframe = document.getElementById('app-iframe');
+      try {
+        if (iframe.contentWindow.bgSetPreset) {
+          iframe.contentWindow.bgSetPreset(hour);
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    }
+  </script>
+</body>
+</html>

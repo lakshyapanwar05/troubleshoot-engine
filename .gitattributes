@@ -1,0 +1,19 @@
+# Normalize line endings to LF in the repository
+* text=auto eol=lf
+
+# Force LF for these files even on Windows checkouts
+*.py    text eol=lf
+*.js    text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.json  text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.txt   text eol=lf
+*.md    text eol=lf
+*.sh    text eol=lf
+
+# Binary files — do not touch line endings
+*.npy   binary
+*.pyc   binary
+models/** binary

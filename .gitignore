@@ -1,6 +1,68 @@
-.antigravity/
-.venv/
-models/
+# ── Python ────────────────────────────────────────────────────────────
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ── Virtual environments ───────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env.local
+.env.*.local
+
+# ── Environment / secrets — NEVER commit these ─────────────────────────
+.env
+.env.*
+*.secret
+secrets.yaml
+secrets.json
+*_key.txt
+*_token.txt
+serviceAccountKey.json
+
+# ── ML model weights (large binary — download at runtime) ─────────────
+models/
+
+# ── Cache binary blobs (JSON index is committed; .npy are regenerated) ─
+cache/*.npy
+
+# ── Test / coverage artifacts ─────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+*.lcov
+coverage.xml
+
+# ── IDE / editor ──────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Node (if any tooling is added) ────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Antigravity IDE agent scratch space ───────────────────────────────
+.antigravity/
 scratch/
+
+# ── Logs ──────────────────────────────────────────────────────────────
+*.log
+logs/

@@ -161,24 +161,85 @@ def extract_salient_symptoms(query: str) -> list[str]:
     return symptoms
 
 
+_synonym_word_to_group: Optional[dict[str, set[str]]] = None
+
+
+def _load_synonym_groups() -> dict[str, set[str]]:
+    """Build synonym equivalence groups from rules/synonyms.yaml."""
+    global _synonym_word_to_group
+    if _synonym_word_to_group is not None:
+        return _synonym_word_to_group
+
+    groups: list[set[str]] = [
+        {"blank", "black", "dark", "empty"},
+        {"flash", "flashes", "flashing", "flicker", "flickers", "blink", "strobe"},
+        {"crack", "cracked", "broken", "shatter", "shattered", "smashed", "damaged"},
+        {"slow", "lag", "laggy", "delay", "delayed", "unresponsive", "sluggish", "latency"},
+        {"email", "mail", "gmail"},
+        {"data transfer", "transfer data", "migrate", "copy data"},
+        {"distort", "distorted", "garbled", "glitch", "glitchy", "corrupted", "messed up"},
+        {"freeze", "frozen", "stuck", "hung", "not responding", "locked up"},
+        {"turn on", "turning on", "power on", "powers on", "start up", "boot up", "switch on"},
+        {"charger", "charging", "charge", "plug in", "power up"},
+        {"rotate", "rotation", "orientation", "landscape", "portrait"},
+    ]
+
+    syn_path = RULES_DIR / "synonyms.yaml"
+    if syn_path.exists():
+        with open(syn_path, "r", encoding="utf-8") as f:
+            raw_syns = yaml.safe_load(f) or {}
+        excluded = {"screen", "phone", "tablet", "settings", "touch"}
+        for k, v in raw_syns.items():
+            if k not in excluded and isinstance(v, list):
+                grp = {k.lower()} | {str(x).lower() for x in v}
+                merged = False
+                for existing in groups:
+                    if existing & grp:
+                        existing.update(grp)
+                        merged = True
+                        break
+                if not merged:
+                    groups.append(grp)
+
+    mapping: dict[str, set[str]] = {}
+    for g in groups:
+        for word in g:
+            if word not in mapping:
+                mapping[word] = set()
+            mapping[word].update(g)
+
+    _synonym_word_to_group = mapping
+    return _synonym_word_to_group
+
+
+def _expand_symptom_candidates(symptom: str) -> set[str]:
+    """Expand a salient symptom term to its synonyms."""
+    s = symptom.lower().strip()
+    candidates = {s}
+    mapping = _load_synonym_groups()
+    if s in mapping:
+        candidates.update(mapping[s])
+    s_stem = s.rstrip("sedingy")
+    if len(s_stem) >= 4:
+        for w, grp in mapping.items():
+            if w.startswith(s_stem) or s_stem.startswith(w.rstrip("sedingy")):
+                candidates.update(grp)
+    return candidates
+
+
 def section_has_symptom(heading: str, body: str, symptoms: list[str]) -> bool:
     """Verify that at least one salient symptom appears in the section."""
     if not symptoms:
         return False
     text = (heading + " " + body).lower()
 
-    EXPANSIONS = {
-        "gmail": ["email", "mail", "gmail"],
-        "email": ["email", "mail", "gmail"],
-    }
-
     for s in symptoms:
-        candidates = EXPANSIONS.get(s, [s])
+        candidates = _expand_symptom_candidates(s)
         for cand in candidates:
             if re.search(r"\b" + re.escape(cand) + r"\b", text):
                 return True
             if len(cand) > 4:
-                root = cand.rstrip("seding")
+                root = cand.rstrip("sedingy")
                 if len(root) >= 4 and re.search(r"\b" + re.escape(root), text):
                     return True
     return False

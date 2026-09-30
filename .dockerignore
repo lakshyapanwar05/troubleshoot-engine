@@ -1,11 +1,52 @@
+# Git
 .git
 .gitignore
+
+# Python environment — never in image
 .venv
+venv
+
+# Bytecode
 __pycache__
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
+
+# Testing / CI artifacts
 .pytest_cache
+tests/
+eval/
+scripts/
+paraphrases.jsonl
+results.jsonl
+reports/
+
+# IDE / editor
 .idea
 .vscode
+.antigravity
+scratch
+
+# Secrets
+.env
+.env.*
+*.secret
+
+# Logs
 *.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Docs
+*.md
+DATA_NOTES.md
+metrics.md
+
+# Cache binary blobs (JSON index is included; numpy arrays regenerated)
+cache/cache_vectors.npy
+cache/catalog_emb.npy
+
+# Node (if any build tooling is added later)
+node_modules
