@@ -313,3 +313,4 @@ docker run -d --name troubleshoot-engine -p 8000:8000 troubleshoot-engine
 # Check health endpoint
 curl http://localhost:8000/health
 ```
+Deployable Link: https://dog-logs-peace-latinas.trycloudflare.com/
