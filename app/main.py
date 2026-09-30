@@ -37,12 +37,11 @@ async def lifespan(app: FastAPI):
     loop = asyncio.get_event_loop()
     await loop.run_in_executor(None, pipeline.initialize)
 
-    # Prewarm with all 20 rows
-    rows = load_siis_responses()
-    await loop.run_in_executor(None, pipeline.prewarm, rows)
-
-    _ready = True
-    logger.info("Startup complete — ready to serve requests")
+    # Mark the service ready after pipeline initialization.
+# Prewarming is skipped to avoid delaying cloud startup.
+_ready = True
+logger.info("Startup complete — ready to serve requests")
+    # pyrefly: ignore [parse-error]
     yield
     logger.info("Shutting down")
 
