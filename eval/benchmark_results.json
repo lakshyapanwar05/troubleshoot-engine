@@ -1,0 +1,47 @@
+{
+  "dataset_rows": 20,
+  "recall_valid_rows": 15,
+  "recall_rate": 0.75,
+  "total_goals": 15,
+  "total_actions": 23,
+  "total_deeplinks": 3,
+  "categories_distribution": {
+    "auto": 2,
+    "manual": 18,
+    "critical": 3
+  },
+  "invariants": {
+    "url_leaks": 0,
+    "catalog_violations": 0,
+    "desc_violations": 0,
+    "title_violations": 0,
+    "order_violations": 0,
+    "manual_dl_violations": 0
+  },
+  "latency_cold": {
+    "p50_ms": 157.87,
+    "p90_ms": 208.39,
+    "p95_ms": 256.66,
+    "p99_ms": 257.13,
+    "mean_ms": 140.07
+  },
+  "latency_warm": {
+    "p50_ms": 0.16,
+    "p90_ms": 6.68,
+    "p95_ms": 7.58,
+    "p99_ms": 8.6,
+    "mean_ms": 1.29
+  },
+  "latency_paraphrase": {
+    "p50_ms": 0.22,
+    "p90_ms": 9.18,
+    "p95_ms": 9.76,
+    "p99_ms": 14.03,
+    "mean_ms": 3.58
+  },
+  "cache": {
+    "warm_hit_rate": 100.0,
+    "paraphrase_hit_rate": 99.49,
+    "total_paraphrases_tested": 197
+  }
+}

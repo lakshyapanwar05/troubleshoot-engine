@@ -1,0 +1,915 @@
+{
+  "total_queries": 100,
+  "answered_count": 61,
+  "answer_rate": 61.0,
+  "cache_hits": 56,
+  "fallback_hits": 16,
+  "rejections": 28,
+  "correct_count": 74,
+  "correctness_rate": 74.0,
+  "answerable_accuracy": 70.66666666666667,
+  "fallback_p50_ms": 23.745299999063718,
+  "fallback_p95_ms": 259.8874849991262,
+  "results": [
+    {
+      "id": "row_1",
+      "query": "Gmail keeps crashing to a blank white screen every single time I try to view my emails on the tablet.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.408800000324845
+    },
+    {
+      "id": "row_1",
+      "query": "tablet screen flahses and goes blank when tapping email in gmail app",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.085899997240631
+    },
+    {
+      "id": "row_1",
+      "query": "tablet gmail blank screen flashing email crash",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.26579999900423
+    },
+    {
+      "id": "row_1",
+      "query": "Why does my tablet screen keep going completely blank whenever I open an email?! I can't read anything!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 15.32750000114902
+    },
+    {
+      "id": "row_1",
+      "query": "Every time I tap an incoming message in Gmail the screen flickers once and turns totally blank on me.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 9.011399997689296
+    },
+    {
+      "id": "row_2",
+      "query": "Opening the stock tracker or Quick Assist causes the entire screen to go completely white with no visible text.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.502399999997579
+    },
+    {
+      "id": "row_2",
+      "query": "phone screen turns completly blank or white no text in stock price search",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 10.317400003259536
+    },
+    {
+      "id": "row_2",
+      "query": "screen white blank no text stock price quick assist apps",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.825099997717189
+    },
+    {
+      "id": "row_2",
+      "query": "I can't see any text at all! The screen just turns totally white when searching stocks or using apps!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.311399997182889
+    },
+    {
+      "id": "row_2",
+      "query": "Whenever I launch Quick Assist or check stocks, the display wipes out into a blank white screen.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 14.380600001459243
+    },
+    {
+      "id": "row_3",
+      "query": "My phone display died and is completely black, so I cannot see the screen to back up or transfer any of my files.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.692799998243572
+    },
+    {
+      "id": "row_3",
+      "query": "screen went completly black cant see or interact unable to data transfer",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.554499999969266
+    },
+    {
+      "id": "row_3",
+      "query": "black screen phone cannot interact data transfer impossible",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.739999997487757
+    },
+    {
+      "id": "row_3",
+      "query": "My screen went completely pitch black and now I can't transfer my data to my new phone at all!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.556400000088615
+    },
+    {
+      "id": "row_3",
+      "query": "The display is pitch dark so I have no way of navigating or using Data Transfer to get my stuff off.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 78.47119999860297
+    },
+    {
+      "id": "row_4",
+      "query": "The screen suddenly turned totally black out of nowhere and refuses to power back on no matter what I press.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 170.7289000005403
+    },
+    {
+      "id": "row_4",
+      "query": "screen suddenly went completly black wont turn back on",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.098300000507152
+    },
+    {
+      "id": "row_4",
+      "query": "phone screen suddenly black wont turn on power issue",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.280099998955848
+    },
+    {
+      "id": "row_4",
+      "query": "My phone display just shut off out of nowhere and now it won't turn on at all, completely dead screen!",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 174.01479999898584
+    },
+    {
+      "id": "row_4",
+      "query": "While using my device the display suddenly went black and holding the power button does nothing.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 10.454100000060862
+    },
+    {
+      "id": "row_5",
+      "query": "The camera viewfinder stays completely blank when trying to scan the QR code in Data Transfer to migrate files.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 57.21149999953923
+    },
+    {
+      "id": "row_5",
+      "query": "tablet screen stays completly blank when scan qr code data transfer",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.28499999968335
+    },
+    {
+      "id": "row_5",
+      "query": "data transfer qr code scan screen blank transfer stuck",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 6.9088000018382445
+    },
+    {
+      "id": "row_5",
+      "query": "Data Transfer won't work because the QR scan screen is completely blank and nothing is showing up!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.780500000080792
+    },
+    {
+      "id": "row_5",
+      "query": "I'm trying to migrate data from my old phone but the QR code scanning screen stays completely dark.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.603500002005603
+    },
+    {
+      "id": "row_7",
+      "query": "My tablet display is mostly pitch black with only three app shortcuts visible, and tapping them does nothing.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 15.545700000075158
+    },
+    {
+      "id": "row_7",
+      "query": "tablet screen stays dark only three app icons lit up other icons wont open",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 7.390000002487795
+    },
+    {
+      "id": "row_7",
+      "query": "tablet screen dark 3 icons lit icons wont open frozen",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 7.225400000606896
+    },
+    {
+      "id": "row_7",
+      "query": "Almost my whole screen is black except for three icons and none of them will open when I tap them!",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 17.036599998391466
+    },
+    {
+      "id": "row_7",
+      "query": "The screen stays dark except three illuminated icons that are completely unresponsive to taps.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 261.0196999994514
+    },
+    {
+      "id": "row_8",
+      "query": "The display image is stuck in a shrunken tiny window in the center and will not stretch to fit the full panel.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 16.04409999708878
+    },
+    {
+      "id": "row_8",
+      "query": "phone main screen stays small doesnt fill whole display cant expand",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 7.0793999984744005
+    },
+    {
+      "id": "row_8",
+      "query": "phone screen stays small tiny window doesnt fill full display",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 7.270900001458358
+    },
+    {
+      "id": "row_8",
+      "query": "Why is my phone display shrunk into a tiny box in the middle of the screen?! It won't go full screen!",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 9.076199999981327
+    },
+    {
+      "id": "row_8",
+      "query": "The active screen area is miniature and won't expand to take up the full screen size.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 14.881799997965572
+    },
+    {
+      "id": "row_9",
+      "query": "The main folding internal display has gone completely dead and unresponsive, but the outer cover screen works fine.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 253.4715999972832
+    },
+    {
+      "id": "row_9",
+      "query": "inner screen stopped working no image doesnt respond to touch outer screen fine",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.656100002350286
+    },
+    {
+      "id": "row_9",
+      "query": "inner folding screen dead no image touch broken outer screen works",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 7.174899998062756
+    },
+    {
+      "id": "row_9",
+      "query": "The inner folding screen completely died with no picture or touch, even though the front screen still works!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 8.119199999782722
+    },
+    {
+      "id": "row_9",
+      "query": "When I unfold the phone the big inner display is totally dead to touch and sight, while the outside screen is okay.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 275.1243999991857
+    },
+    {
+      "id": "row_10",
+      "query": "The screen starts flickering erratically and then blacks out the moment I unfold the hinge to open the phone.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 88.83260000220616
+    },
+    {
+      "id": "row_10",
+      "query": "screen flickers and goes blank whenever i open folding phone",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 7.2725999998510815
+    },
+    {
+      "id": "row_10",
+      "query": "screen flicker goes blank when open hinge cant access settings",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 46.36770000070101
+    },
+    {
+      "id": "row_10",
+      "query": "Every single time I open my folding phone the screen flickers violently and goes pitch black!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 8.091600000625476
+    },
+    {
+      "id": "row_10",
+      "query": "Whenever I unfold the device the display flashes rapidly and blanks out so I can't use it at all.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": false,
+      "latency_ms": 168.5484000008728
+    },
+    {
+      "id": "row_11",
+      "query": "Half of the screen has gone totally black down the middle while the opposite side is still showing content normally.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 25.632799999584677
+    },
+    {
+      "id": "row_11",
+      "query": "screen is half black one side completely dark other half shows content",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.895400001871167
+    },
+    {
+      "id": "row_11",
+      "query": "screen half black dark split display one side working",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.731300000159536
+    },
+    {
+      "id": "row_11",
+      "query": "Half of my screen is totally blacked out! One side works fine but the other is completely unusable!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.159100001648767
+    },
+    {
+      "id": "row_11",
+      "query": "There's a vertical split where one side of the display is pitch black and the other half is visible.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 21.85779999854276
+    },
+    {
+      "id": "row_12",
+      "query": "A persistent floating circular button is hovering over all my screens with shortcut menus that I want to turn off.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 16.29490000050282
+    },
+    {
+      "id": "row_12",
+      "query": "floating circle constantly hovers on screen quick shortcuts remove disable",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 8.015399998839712
+    },
+    {
+      "id": "row_12",
+      "query": "floating circle hover screen shortcuts assistant menu remove",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 19.92420000169659
+    },
+    {
+      "id": "row_12",
+      "query": "How do I get rid of this annoying floating circle widget that is always stuck on my screen?!",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 16.22470000074827
+    },
+    {
+      "id": "row_12",
+      "query": "There is a circular shortcut bubble floating over every app and I need to figure out how to disable it.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 17.01619999948889
+    },
+    {
+      "id": "row_13",
+      "query": "After reactivating my mobile plan with the network carrier, the phone display remains totally blank without indicators.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 15.82090000010794
+    },
+    {
+      "id": "row_13",
+      "query": "screen stays blank doesnt show activation network indicators after carrier reactivation",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 9.19400000202586
+    },
+    {
+      "id": "row_13",
+      "query": "screen blank no activation network indicator carrier service",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.1457000012742355
+    },
+    {
+      "id": "row_13",
+      "query": "I just reactivated my carrier service but my phone screen is totally blank with no signal or activation icon!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.389700000407174
+    },
+    {
+      "id": "row_13",
+      "query": "The screen stays completely dark and won't show network activation status after carrier reconnect.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.899899999756599
+    },
+    {
+      "id": "row_14",
+      "query": "The glass on my phone screen is severely shattered and broken all over, and I urgently need to schedule a screen repair.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 80.67319999827305
+    },
+    {
+      "id": "row_14",
+      "query": "screen is completly cracked total loss urgently need replace screen",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.063299999572337
+    },
+    {
+      "id": "row_14",
+      "query": "cracked screen glass shattered screen replacement urgent repair",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 68.62750000072992
+    },
+    {
+      "id": "row_14",
+      "query": "My screen is completely smashed and shattered to pieces! I need to get it replaced right away!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.191799999418436
+    },
+    {
+      "id": "row_14",
+      "query": "The display panel is totally cracked after dropping it and I need to get the glass replaced immediately.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.248999998613726
+    },
+    {
+      "id": "row_15",
+      "query": "Turning on the device only results in a dark blue screen filled with tiny unreadable text that won't boot into Android.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 131.1245999968378
+    },
+    {
+      "id": "row_15",
+      "query": "shows blue or black screen with tiny text wont boot into system",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 14.236400002118899
+    },
+    {
+      "id": "row_15",
+      "query": "blue screen tiny text boot error wont start system",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 14.351699999679113
+    },
+    {
+      "id": "row_15",
+      "query": "My phone won't boot! It's stuck on a blue screen with tiny error text and won't load the OS at all!",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 18.041100000118604
+    },
+    {
+      "id": "row_15",
+      "query": "When powering up it stops at a blue screen displaying tiny system text and never boots up properly.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 15.8235999988392
+    },
+    {
+      "id": "row_16",
+      "query": "When I connect the charging cable the display flashes for a split second and then immediately goes back to dark.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 168.1637999972736
+    },
+    {
+      "id": "row_16",
+      "query": "screen flashes extremely quickly in blink of an eye when plug in charger wont turn on",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.191000000806525
+    },
+    {
+      "id": "row_16",
+      "query": "screen flash blink charger plug in wont turn on",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 155.7801000017207
+    },
+    {
+      "id": "row_16",
+      "query": "The screen just blinks once for a millisecond when plugged into the charger and won't turn on!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 13.000999999349006
+    },
+    {
+      "id": "row_16",
+      "query": "Plugging into the power adapter produces an instantaneous flash on screen, but it remains black afterwards.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 169.57109999930253
+    },
+    {
+      "id": "row_17",
+      "query": "My phone display is completely blank with only a dark scrolling artifact, preventing me from viewing files to transfer.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 16.345000000001164
+    },
+    {
+      "id": "row_17",
+      "query": "screen goes completly blank dark screen with scrolling cant see to transfer data",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 15.626100001099985
+    },
+    {
+      "id": "row_17",
+      "query": "blank dark screen scrolling cannot see transfer data",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 14.206899999408051
+    },
+    {
+      "id": "row_17",
+      "query": "The screen is just dark with faint scrolling lines so I can't see anything to transfer my data across!",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 18.7727000011364
+    },
+    {
+      "id": "row_17",
+      "query": "I'm trying to move my files over but the screen is dark with weird scrolling and I can't view anything.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 16.098799998871982
+    },
+    {
+      "id": "row_19",
+      "query": "The screen cracked directly along the folding hinge line and black ink is bleeding out across the middle crease.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 76.48160000098869
+    },
+    {
+      "id": "row_19",
+      "query": "screen is cracked right where it folds black ink bleeding crease urgently fixed",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.478899999114219
+    },
+    {
+      "id": "row_19",
+      "query": "screen cracked fold crease black ink bleeding repair urgent",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 6.360400002449751
+    },
+    {
+      "id": "row_19",
+      "query": "The folding crease is cracked and black ink is leaking across the display! I need urgent repair!",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.502399999793852
+    },
+    {
+      "id": "row_19",
+      "query": "There's a crack right on the hinge fold line with black liquid bleeding through the center of the display.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.407100001932122
+    },
+    {
+      "id": "row_20",
+      "query": "The brand new phone's screen has graphical distortions right out of the box and I want to run a hardware display test.",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 8.196299997507595
+    },
+    {
+      "id": "row_20",
+      "query": "screen looks distorted right after received new phone check if defective screen test",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 7.092000003467547
+    },
+    {
+      "id": "row_20",
+      "query": "distorted screen new phone out of box hardware display test defective",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 6.598599997232668
+    },
+    {
+      "id": "row_20",
+      "query": "My brand new phone display looks distorted and glitched straight out of the box! Is the panel defective?!",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": true,
+      "latency_ms": 16.50339999832795
+    },
+    {
+      "id": "row_20",
+      "query": "Just unboxed the phone and the display shows graphical distortion; how can I test if the screen is broken?",
+      "answered": false,
+      "cache_hit": true,
+      "fallback": "no_match",
+      "is_correct": true,
+      "latency_ms": 10.951100000966107
+    },
+    {
+      "id": "row_21",
+      "query": "Touch input is extremely sluggish and there is a noticeable lag between tapping the display and device response.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 9.667599999374943
+    },
+    {
+      "id": "row_21",
+      "query": "screen inputs delayed touch responsiveness laggy noticeable delay interact phone",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.525799999915762
+    },
+    {
+      "id": "row_21",
+      "query": "touch response laggy delayed inputs touch responsiveness latency",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 7.313400001294212
+    },
+    {
+      "id": "row_21",
+      "query": "Tapping the screen takes forever to respond! The touch latency is so laggy it's driving me crazy!",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 290.3909999986354
+    },
+    {
+      "id": "row_21",
+      "query": "There is a severe delay whenever I tap or swipe on the screen, like the touch input is lagging behind.",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 11.124199998448603
+    },
+    {
+      "id": "row_22",
+      "query": "The phone rings and vibrates normally for incoming calls, but the screen stays 100% black with no picture at all.",
+      "answered": false,
+      "cache_hit": false,
+      "fallback": "no_siis_context",
+      "is_correct": false,
+      "latency_ms": 16.777799999545095
+    },
+    {
+      "id": "row_22",
+      "query": "screen is completly black wont turn on phone powers on rings no physical damage",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 165.30559999955585
+    },
+    {
+      "id": "row_22",
+      "query": "black screen phone rings powers on works no display physical damage none",
+      "answered": true,
+      "cache_hit": true,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 8.686400000442518
+    },
+    {
+      "id": "row_22",
+      "query": "My phone is still ringing and vibrating when calls come in, but the display is completely black and won't turn on!",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 190.98829999711597
+    },
+    {
+      "id": "row_22",
+      "query": "The device clearly powers on and receives notifications, yet the screen remains entirely pitch black.",
+      "answered": true,
+      "cache_hit": false,
+      "fallback": null,
+      "is_correct": true,
+      "latency_ms": 250.23529999816674
+    }
+  ]
+}

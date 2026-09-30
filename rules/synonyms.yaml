@@ -1,0 +1,108 @@
+# Synonym groups for query variation generation and normalization.
+# Each key is a canonical term; values are synonyms.
+
+screen:
+  - display
+  - touchscreen
+  - panel
+
+blank:
+  - black
+  - dark
+  - empty
+
+phone:
+  - device
+  - smartphone
+  - mobile
+  - handset
+
+tablet:
+  - tab
+  - pad
+
+flicker:
+  - flash
+  - blink
+  - strobe
+  - flashing
+
+crack:
+  - broken
+  - shattered
+  - smashed
+  - damaged
+
+lag:
+  - delay
+  - slow
+  - unresponsive
+  - sluggish
+  - latency
+
+touch:
+  - tap
+  - input
+  - press
+
+turn on:
+  - power on
+  - start up
+  - boot up
+  - switch on
+
+turn off:
+  - power off
+  - shut down
+  - switch off
+
+connect:
+  - link
+  - pair
+  - attach
+
+charge:
+  - plug in
+  - power up
+
+restart:
+  - reboot
+  - reset
+  - power cycle
+
+settings:
+  - preferences
+  - options
+  - configuration
+
+wi-fi:
+  - wifi
+  - wireless
+  - internet connection
+
+data transfer:
+  - transfer data
+  - migrate
+  - copy data
+
+rotate:
+  - orientation
+  - landscape
+  - portrait
+
+distorted:
+  - garbled
+  - glitchy
+  - corrupted
+  - messed up
+
+frozen:
+  - stuck
+  - hung
+  - not responding
+  - locked up
+
+cracked:
+  - shattered
+  - broken screen
+  - smashed screen

@@ -1,0 +1,820 @@
+{
+  "matched_rejected": [
+    {
+      "query_id": "row_7",
+      "query": "My tablet's screen stays dark and only three app icons are lit while the rest are dark and won't open, so nothing loads on the screen and I can't use the device.",
+      "article_id": "row_7",
+      "article_title": "Use Multi window and App pairs on your smartphone or tablet",
+      "salient_terms": [
+        "dark",
+        "won't open",
+        "nothing loads"
+      ],
+      "score": "N/A"
+    },
+    {
+      "query_id": "row_7",
+      "query": "My tablet's screen stays dark and only three app icons are lit while the rest are dark and won't open, so nothing loads on the screen and I can't use the device.",
+      "article_id": "row_12",
+      "article_title": "Use Multi window and App pairs on your smartphone or tablet",
+      "salient_terms": [
+        "dark",
+        "won't open",
+        "nothing loads"
+      ],
+      "score": "N/A"
+    },
+    {
+      "query_id": "row_8",
+      "query": "My new smartphone's main screen stays small and doesn't fill the whole display; I can't make it expand to full size and I've never seen this before.",
+      "article_id": "row_8",
+      "article_title": "Screen mirroring to your TechCorp TV",
+      "salient_terms": [
+        "doesn't fill"
+      ],
+      "score": "N/A"
+    },
+    {
+      "query_id": "row_10",
+      "query": "My TechCorp Nexa Fold X1 screen flickers and goes blank whenever I open it, so I can't see anything or access the settings, which stops me from using the phone.",
+      "article_id": "row_10",
+      "article_title": "Screen flickers when using the Camera on a smartphone",
+      "salient_terms": [
+        "blank",
+        "flicker",
+        "flickers"
+      ],
+      "score": "N/A"
+    },
+    {
+      "query_id": "row_12",
+      "query": "My Nexa X1 has a floating circle that constantly hovers on my screen and gives me quick shortcuts to recent apps, home, back, screen off, volume control, and more; I want to remove it.",
+      "article_id": "row_7",
+      "article_title": "Use Multi window and App pairs on your smartphone or tablet",
+      "salient_terms": [
+        "floating circle",
+        "circle",
+        "hover",
+        "hovers"
+      ],
+      "score": "N/A"
+    },
+    {
+      "query_id": "row_12",
+      "query": "My Nexa X1 has a floating circle that constantly hovers on my screen and gives me quick shortcuts to recent apps, home, back, screen off, volume control, and more; I want to remove it.",
+      "article_id": "row_12",
+      "article_title": "Use Multi window and App pairs on your smartphone or tablet",
+      "salient_terms": [
+        "floating circle",
+        "circle",
+        "hover",
+        "hovers"
+      ],
+      "score": "N/A"
+    },
+    {
+      "query_id": "row_20",
+      "query": "My Nexa A14 screen looks distorted right after I received the phone, and I need a diagnostic test.",
+      "article_id": "row_20",
+      "article_title": "Screen does not rotate on smartphone or tablet",
+      "salient_terms": [
+        "distort",
+        "distorted"
+      ],
+      "score": "N/A"
+    }
+  ],
+  "mismatched_answered": {
+    "Some things to check first": [
+      {
+        "query_id": "row_1",
+        "query": "1. My TechCorp A15G tablet screen flashes and then goes comp",
+        "article_id": "row_3",
+        "score": 0.59,
+        "salient_terms": [
+          "blank",
+          "flash",
+          "email",
+          "gmail"
+        ]
+      },
+      {
+        "query_id": "row_1",
+        "query": "1. My TechCorp A15G tablet screen flashes and then goes comp",
+        "article_id": "row_11",
+        "score": 0.59,
+        "salient_terms": [
+          "blank",
+          "flash",
+          "email",
+          "gmail"
+        ]
+      },
+      {
+        "query_id": "row_1",
+        "query": "1. My TechCorp A15G tablet screen flashes and then goes comp",
+        "article_id": "row_17",
+        "score": 0.59,
+        "salient_terms": [
+          "blank",
+          "flash",
+          "email",
+          "gmail"
+        ]
+      },
+      {
+        "query_id": "row_2",
+        "query": "My Nexa X1 screen turns completely blank or white and no tex",
+        "article_id": "row_3",
+        "score": 0.49,
+        "salient_terms": [
+          "blank",
+          "white"
+        ]
+      },
+      {
+        "query_id": "row_2",
+        "query": "My Nexa X1 screen turns completely blank or white and no tex",
+        "article_id": "row_11",
+        "score": 0.49,
+        "salient_terms": [
+          "blank",
+          "white"
+        ]
+      },
+      {
+        "query_id": "row_2",
+        "query": "My Nexa X1 screen turns completely blank or white and no tex",
+        "article_id": "row_17",
+        "score": 0.49,
+        "salient_terms": [
+          "blank",
+          "white"
+        ]
+      },
+      {
+        "query_id": "row_4",
+        "query": "My TechCorp Nexa A14/A15 screen suddenly went completely bla",
+        "article_id": "row_3",
+        "score": 0.54,
+        "salient_terms": [
+          "black",
+          "turn it on"
+        ]
+      },
+      {
+        "query_id": "row_4",
+        "query": "My TechCorp Nexa A14/A15 screen suddenly went completely bla",
+        "article_id": "row_11",
+        "score": 0.54,
+        "salient_terms": [
+          "black",
+          "turn it on"
+        ]
+      },
+      {
+        "query_id": "row_4",
+        "query": "My TechCorp Nexa A14/A15 screen suddenly went completely bla",
+        "article_id": "row_17",
+        "score": 0.54,
+        "salient_terms": [
+          "black",
+          "turn it on"
+        ]
+      },
+      {
+        "query_id": "row_5",
+        "query": "My tablet screen stays completely blank when I try to use Da",
+        "article_id": "row_3",
+        "score": 0.57,
+        "salient_terms": [
+          "blank",
+          "data transfer",
+          "qr code",
+          "scan"
+        ]
+      },
+      {
+        "query_id": "row_5",
+        "query": "My tablet screen stays completely blank when I try to use Da",
+        "article_id": "row_11",
+        "score": 0.57,
+        "salient_terms": [
+          "blank",
+          "data transfer",
+          "qr code",
+          "scan"
+        ]
+      },
+      {
+        "query_id": "row_5",
+        "query": "My tablet screen stays completely blank when I try to use Da",
+        "article_id": "row_17",
+        "score": 0.57,
+        "salient_terms": [
+          "blank",
+          "data transfer",
+          "qr code",
+          "scan"
+        ]
+      },
+      {
+        "query_id": "row_9",
+        "query": "My Nexa Fold X1 inner screen stopped working by itself; it s",
+        "article_id": "row_3",
+        "score": 0.53,
+        "salient_terms": [
+          "touch",
+          "inner screen",
+          "cover screen"
+        ]
+      },
+      {
+        "query_id": "row_9",
+        "query": "My Nexa Fold X1 inner screen stopped working by itself; it s",
+        "article_id": "row_11",
+        "score": 0.53,
+        "salient_terms": [
+          "touch",
+          "inner screen",
+          "cover screen"
+        ]
+      },
+      {
+        "query_id": "row_9",
+        "query": "My Nexa Fold X1 inner screen stopped working by itself; it s",
+        "article_id": "row_17",
+        "score": 0.53,
+        "salient_terms": [
+          "touch",
+          "inner screen",
+          "cover screen"
+        ]
+      },
+      {
+        "query_id": "row_10",
+        "query": "My TechCorp Nexa Fold X1 screen flickers and goes blank when",
+        "article_id": "row_3",
+        "score": 0.5,
+        "salient_terms": [
+          "blank",
+          "flicker",
+          "flickers"
+        ]
+      },
+      {
+        "query_id": "row_10",
+        "query": "My TechCorp Nexa Fold X1 screen flickers and goes blank when",
+        "article_id": "row_11",
+        "score": 0.5,
+        "salient_terms": [
+          "blank",
+          "flicker",
+          "flickers"
+        ]
+      },
+      {
+        "query_id": "row_10",
+        "query": "My TechCorp Nexa Fold X1 screen flickers and goes blank when",
+        "article_id": "row_17",
+        "score": 0.5,
+        "salient_terms": [
+          "blank",
+          "flicker",
+          "flickers"
+        ]
+      },
+      {
+        "query_id": "row_13",
+        "query": "My Nexa X1 screen stays blank and doesn't show any activatio",
+        "article_id": "row_3",
+        "score": 0.51,
+        "salient_terms": [
+          "blank",
+          "turn it on",
+          "activation",
+          "carrier",
+          "deactivated"
+        ]
+      },
+      {
+        "query_id": "row_13",
+        "query": "My Nexa X1 screen stays blank and doesn't show any activatio",
+        "article_id": "row_11",
+        "score": 0.51,
+        "salient_terms": [
+          "blank",
+          "turn it on",
+          "activation",
+          "carrier",
+          "deactivated"
+        ]
+      },
+      {
+        "query_id": "row_13",
+        "query": "My Nexa X1 screen stays blank and doesn't show any activatio",
+        "article_id": "row_17",
+        "score": 0.51,
+        "salient_terms": [
+          "blank",
+          "turn it on",
+          "activation",
+          "carrier",
+          "deactivated"
+        ]
+      },
+      {
+        "query_id": "row_15",
+        "query": "My Nexa X1 Ultra only shows a blue (or black) screen with ti",
+        "article_id": "row_3",
+        "score": 0.58,
+        "salient_terms": [
+          "black",
+          "blue",
+          "tiny text",
+          "turn it on",
+          "power button",
+          "start up"
+        ]
+      },
+      {
+        "query_id": "row_15",
+        "query": "My Nexa X1 Ultra only shows a blue (or black) screen with ti",
+        "article_id": "row_11",
+        "score": 0.58,
+        "salient_terms": [
+          "black",
+          "blue",
+          "tiny text",
+          "turn it on",
+          "power button",
+          "start up"
+        ]
+      },
+      {
+        "query_id": "row_15",
+        "query": "My Nexa X1 Ultra only shows a blue (or black) screen with ti",
+        "article_id": "row_17",
+        "score": 0.58,
+        "salient_terms": [
+          "black",
+          "blue",
+          "tiny text",
+          "turn it on",
+          "power button",
+          "start up"
+        ]
+      },
+      {
+        "query_id": "row_16",
+        "query": "My TechCorp X1 Ultra screen flashes extremely quickly (in mi",
+        "article_id": "row_3",
+        "score": 0.41,
+        "salient_terms": [
+          "flash",
+          "charger",
+          "plug in"
+        ]
+      },
+      {
+        "query_id": "row_16",
+        "query": "My TechCorp X1 Ultra screen flashes extremely quickly (in mi",
+        "article_id": "row_11",
+        "score": 0.41,
+        "salient_terms": [
+          "flash",
+          "charger",
+          "plug in"
+        ]
+      },
+      {
+        "query_id": "row_16",
+        "query": "My TechCorp X1 Ultra screen flashes extremely quickly (in mi",
+        "article_id": "row_17",
+        "score": 0.41,
+        "salient_terms": [
+          "flash",
+          "charger",
+          "plug in"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_3",
+        "score": 0.54,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_11",
+        "score": 0.54,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_17",
+        "score": 0.54,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_21",
+        "query": "My Nexa X1 screen inputs are delayed and the touch responsiv",
+        "article_id": "row_3",
+        "score": 0.45,
+        "salient_terms": [
+          "touch",
+          "lag",
+          "laggy",
+          "delayed",
+          "delay"
+        ]
+      },
+      {
+        "query_id": "row_21",
+        "query": "My Nexa X1 screen inputs are delayed and the touch responsiv",
+        "article_id": "row_11",
+        "score": 0.45,
+        "salient_terms": [
+          "touch",
+          "lag",
+          "laggy",
+          "delayed",
+          "delay"
+        ]
+      },
+      {
+        "query_id": "row_21",
+        "query": "My Nexa X1 screen inputs are delayed and the touch responsiv",
+        "article_id": "row_17",
+        "score": 0.45,
+        "salient_terms": [
+          "touch",
+          "lag",
+          "laggy",
+          "delayed",
+          "delay"
+        ]
+      },
+      {
+        "query_id": "row_22",
+        "query": "My Nexa X1 Ultra screen is completely black and won't turn o",
+        "article_id": "row_3",
+        "score": 0.54,
+        "salient_terms": [
+          "black",
+          "turn on",
+          "powers on",
+          "physical damage"
+        ]
+      },
+      {
+        "query_id": "row_22",
+        "query": "My Nexa X1 Ultra screen is completely black and won't turn o",
+        "article_id": "row_11",
+        "score": 0.54,
+        "salient_terms": [
+          "black",
+          "turn on",
+          "powers on",
+          "physical damage"
+        ]
+      },
+      {
+        "query_id": "row_22",
+        "query": "My Nexa X1 Ultra screen is completely black and won't turn o",
+        "article_id": "row_17",
+        "score": 0.54,
+        "salient_terms": [
+          "black",
+          "turn on",
+          "powers on",
+          "physical damage"
+        ]
+      }
+    ],
+    "Use Multi window and App pairs on your smartphone or tablet": [
+      {
+        "query_id": "row_1",
+        "query": "1. My TechCorp A15G tablet screen flashes and then goes comp",
+        "article_id": "row_7",
+        "score": 0.42,
+        "salient_terms": [
+          "blank",
+          "flash",
+          "email",
+          "gmail"
+        ]
+      },
+      {
+        "query_id": "row_1",
+        "query": "1. My TechCorp A15G tablet screen flashes and then goes comp",
+        "article_id": "row_12",
+        "score": 0.42,
+        "salient_terms": [
+          "blank",
+          "flash",
+          "email",
+          "gmail"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_7",
+        "score": 0.39,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_12",
+        "score": 0.39,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_21",
+        "query": "My Nexa X1 screen inputs are delayed and the touch responsiv",
+        "article_id": "row_7",
+        "score": 0.41,
+        "salient_terms": [
+          "touch",
+          "lag",
+          "laggy",
+          "delayed",
+          "delay"
+        ]
+      },
+      {
+        "query_id": "row_21",
+        "query": "My Nexa X1 screen inputs are delayed and the touch responsiv",
+        "article_id": "row_12",
+        "score": 0.41,
+        "salient_terms": [
+          "touch",
+          "lag",
+          "laggy",
+          "delayed",
+          "delay"
+        ]
+      }
+    ],
+    "Transfer Secure folder with Data Transfer": [
+      {
+        "query_id": "row_3",
+        "query": "My Nexa Fold X1 screen went completely black, so I can't see",
+        "article_id": "row_5",
+        "score": 0.61,
+        "salient_terms": [
+          "black",
+          "data transfer"
+        ]
+      },
+      {
+        "query_id": "row_17",
+        "query": "1. \"My Nexa X1 screen goes completely blank, just a dark scr",
+        "article_id": "row_5",
+        "score": 0.55,
+        "salient_terms": [
+          "blank",
+          "data transfer",
+          "transfer data",
+          "dark"
+        ]
+      }
+    ],
+    "Access your smartphone's data if the screen does not respond": [
+      {
+        "query_id": "row_3",
+        "query": "My Nexa Fold X1 screen went completely black, so I can't see",
+        "article_id": "row_9",
+        "score": 0.43,
+        "salient_terms": [
+          "black",
+          "data transfer"
+        ]
+      },
+      {
+        "query_id": "row_17",
+        "query": "1. \"My Nexa X1 screen goes completely blank, just a dark scr",
+        "article_id": "row_9",
+        "score": 0.4,
+        "salient_terms": [
+          "blank",
+          "data transfer",
+          "transfer data",
+          "dark"
+        ]
+      }
+    ],
+    "Email server not responding on smartphone or tablet": [
+      {
+        "query_id": "row_9",
+        "query": "My Nexa Fold X1 inner screen stopped working by itself; it s",
+        "article_id": "row_1",
+        "score": 0.43,
+        "salient_terms": [
+          "touch",
+          "inner screen",
+          "cover screen"
+        ]
+      },
+      {
+        "query_id": "row_15",
+        "query": "My Nexa X1 Ultra only shows a blue (or black) screen with ti",
+        "article_id": "row_1",
+        "score": 0.43,
+        "salient_terms": [
+          "black",
+          "blue",
+          "tiny text",
+          "turn it on",
+          "power button",
+          "start up"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_1",
+        "score": 0.44,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_21",
+        "query": "My Nexa X1 screen inputs are delayed and the touch responsiv",
+        "article_id": "row_1",
+        "score": 0.48,
+        "salient_terms": [
+          "touch",
+          "lag",
+          "laggy",
+          "delayed",
+          "delay"
+        ]
+      }
+    ],
+    "Screen does not rotate on smartphone or tablet": [
+      {
+        "query_id": "row_9",
+        "query": "My Nexa Fold X1 inner screen stopped working by itself; it s",
+        "article_id": "row_20",
+        "score": 0.54,
+        "salient_terms": [
+          "touch",
+          "inner screen",
+          "cover screen"
+        ]
+      },
+      {
+        "query_id": "row_14",
+        "query": "My smartphone's screen is completely cracked, it's a total c",
+        "article_id": "row_20",
+        "score": 0.59,
+        "salient_terms": [
+          "crack",
+          "cracked"
+        ]
+      },
+      {
+        "query_id": "row_15",
+        "query": "My Nexa X1 Ultra only shows a blue (or black) screen with ti",
+        "article_id": "row_20",
+        "score": 0.46,
+        "salient_terms": [
+          "black",
+          "blue",
+          "tiny text",
+          "turn it on",
+          "power button",
+          "start up"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_20",
+        "score": 0.52,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_21",
+        "query": "My Nexa X1 screen inputs are delayed and the touch responsiv",
+        "article_id": "row_20",
+        "score": 0.46,
+        "salient_terms": [
+          "touch",
+          "lag",
+          "laggy",
+          "delayed",
+          "delay"
+        ]
+      },
+      {
+        "query_id": "row_22",
+        "query": "My Nexa X1 Ultra screen is completely black and won't turn o",
+        "article_id": "row_20",
+        "score": 0.66,
+        "salient_terms": [
+          "black",
+          "turn on",
+          "powers on",
+          "physical damage"
+        ]
+      }
+    ],
+    "Touchscreen issues on a smartphone or tablet": [
+      {
+        "query_id": "row_9",
+        "query": "My Nexa Fold X1 inner screen stopped working by itself; it s",
+        "article_id": "row_21",
+        "score": 0.52,
+        "salient_terms": [
+          "touch",
+          "inner screen",
+          "cover screen"
+        ]
+      },
+      {
+        "query_id": "row_15",
+        "query": "My Nexa X1 Ultra only shows a blue (or black) screen with ti",
+        "article_id": "row_21",
+        "score": 0.62,
+        "salient_terms": [
+          "black",
+          "blue",
+          "tiny text",
+          "turn it on",
+          "power button",
+          "start up"
+        ]
+      },
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_21",
+        "score": 0.48,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      }
+    ],
+    "Screen mirroring to your TechCorp TV": [
+      {
+        "query_id": "row_19",
+        "query": "1. \"My Nexa Fold X1 screen is cracked again right where it f",
+        "article_id": "row_8",
+        "score": 0.45,
+        "salient_terms": [
+          "crack",
+          "cracked",
+          "folds"
+        ]
+      },
+      {
+        "query_id": "row_22",
+        "query": "My Nexa X1 Ultra screen is completely black and won't turn o",
+        "article_id": "row_8",
+        "score": 0.4,
+        "salient_terms": [
+          "black",
+          "turn on",
+          "powers on",
+          "physical damage"
+        ]
+      }
+    ]
+  }
+}

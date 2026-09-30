@@ -1,0 +1,107 @@
+# Category classification rules.
+# First match wins in order: critical, manual, auto.
+# Each category has keyword lists and optional regex patterns.
+
+critical:
+  keywords:
+    - factory reset
+    - factory data reset
+    - reset settings
+    - reset your device
+    - restart your phone
+    - restart your device
+    - restart your tablet
+    - restart again to confirm
+    - restarting your device
+    - clear data
+    - clear app data
+    - clear the app's data
+    - software update
+    - firmware update
+    - update device software
+    - update software
+  patterns:
+    - "(?i)\\bfactory\\s+(data\\s+)?reset\\b"
+    - "(?i)\\breset\\s+settings\\b"
+    - "(?i)\\breset\\s+(your|the)\\s+device\\b"
+    - "(?i)\\bdelete\\s+all\\b"
+    - "(?i)\\brestart\\s+(your|the)?\\s*(phone|device|tablet)\\b"
+    - "(?i)\\brestart\\s+again\\s+to\\s+confirm\\b"
+    - "(?i)\\btap\\s+restart\\b"
+    - "(?i)\\brestarting\\s+(your|the)?\\s*(phone|device|tablet)\\b"
+    - "(?i)\\bsoftware\\s+update\\b"
+    - "(?i)\\bfirmware\\s+update\\b"
+    - "(?i)\\bupdate\\s+(device\\s+)?software\\b"
+    - "(?i)\\bkeeping\\s+your\\s+device'?s?\\s+software\\s+updated\\b"
+    - "(?i)\\bclear\\s+(the\\s+)?app'?s?\\s+data\\b"
+    - "(?i)\\bclear\\s+data\\b"
+
+manual:
+  keywords:
+    - inspect
+    - examine
+    - check for physical damage
+    - check for liquid
+    - clean
+    - replace
+    - charge
+    - connect charger
+    - plug in
+    - insert
+    - eject
+    - remove battery
+    - remove cases
+    - hold buttons
+    - press and hold
+    - force restart
+    - force a restart
+    - contact
+    - visit
+    - service center
+    - customer support
+    - walk-in
+    - mail-in
+    - schedule a repair
+    - authorized repair
+    - shine a flashlight
+    - USB mouse
+    - USB adapter
+    - HDMI
+    - DeX
+  patterns:
+    - "(?i)\\bcontact\\s+(customer\\s+)?support\\b"
+    - "(?i)\\bvisit\\s+(a|an|the)?\\s*(authorized)?\\s*service\\s+center\\b"
+    - "(?i)\\bschedule\\s+a?\\s*repair\\b"
+    - "(?i)\\bforce\\s+(a\\s+)?restart\\b"
+    - "(?i)\\bpress\\s+and\\s+hold\\s+(both\\s+)?the\\s+(power|side|volume)\\b"
+    - "(?i)\\bremove\\s+(the\\s+)?battery\\b"
+    - "(?i)\\binsert\\s+the\\s+ejector\\b"
+    - "(?i)\\bshine\\s+a\\s+flashlight\\b"
+    - "(?i)\\bconnect.*charger\\b"
+    - "(?i)\\bcharge\\s+(the\\s+)?(device|phone|tablet)\\b"
+    - "(?i)\\bUSB\\s+(mouse|adapter|cable)\\b"
+
+auto:
+  keywords:
+    - settings
+    - navigate to settings
+    - go to settings
+    - open settings
+    - quick settings
+    - tap apps
+    - tap display
+    - tap connections
+    - tap general management
+    - tap storage
+    - tap advanced features
+    - touch sensitivity
+    - navigation bar
+    - auto rotate
+    - screen orientation
+    - multi window
+    - smart view
+  patterns:
+    - "(?i)\\bnavigate\\s+to\\s+(and\\s+open\\s+)?settings\\b"
+    - "(?i)\\bgo\\s+to\\s+settings\\b"
+    - "(?i)\\bopen\\s+settings\\b"
+    - "(?i)\\bsettings\\s*>\\s*"

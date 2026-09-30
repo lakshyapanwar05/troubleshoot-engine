@@ -1,0 +1,21 @@
+{
+  "best_threshold": 0.75,
+  "tune_results": {
+    "threshold": 0.75,
+    "hits": 35,
+    "correct_hits": 34,
+    "false_hits": 1,
+    "hit_rate": 58.333333333333336,
+    "false_rate_total": 1.6666666666666667,
+    "false_rate_hits": 2.857142857142857
+  },
+  "test_results": {
+    "threshold": 0.75,
+    "hits": 13,
+    "correct_hits": 13,
+    "false_hits": 0,
+    "hit_rate": 32.5,
+    "false_rate_total": 0.0,
+    "false_rate_hits": 0.0
+  }
+}

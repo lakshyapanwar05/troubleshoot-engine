@@ -1,0 +1,103 @@
+# Verb lexicon for step extraction.
+# Each verb maps to its canonical form used in step templates.
+# The sectioner/steps module checks line-starts against these.
+
+navigation:
+  - navigate
+  - go to
+  - open
+  - launch
+
+tap:
+  - tap
+  - tap on
+  - touch
+  - press
+
+select:
+  - select
+  - choose
+  - pick
+
+toggle:
+  - toggle
+  - turn on
+  - turn off
+  - enable
+  - disable
+  - switch
+  - activate
+  - deactivate
+
+swipe:
+  - swipe
+  - swipe down
+  - swipe up
+  - swipe left
+  - swipe right
+  - drag
+
+hold:
+  - hold
+  - press and hold
+  - touch and hold
+  - long press
+
+input:
+  - enter
+  - type
+  - input
+  - search for
+
+action:
+  - restart
+  - reboot
+  - reset
+  - clear
+  - delete
+  - remove
+  - uninstall
+  - wipe
+  - erase
+
+connect:
+  - connect
+  - disconnect
+  - plug
+  - unplug
+  - pair
+
+physical:
+  - charge
+  - insert
+  - eject
+  - inspect
+  - examine
+  - check
+  - clean
+  - replace
+  - shine
+
+contact:
+  - contact
+  - visit
+  - call
+  - reach out
+  - schedule
+
+backup:
+  - back up
+  - backup
+  - save
+
+update:
+  - update
+  - upgrade
+  - download
+
+view:
+  - view
+  - look
+  - locate
+  - find
+  - scan

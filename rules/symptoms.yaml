@@ -1,0 +1,151 @@
+# Symptom-to-topic mapping for goal and title generation.
+# Keys are symptom keywords found in the query; values define the output topic and title.
+# First match wins (checked in order).
+
+symptoms:
+  - keywords: [crack, cracked, shattered, smashed, broken screen]
+    topic: Screen Damage
+    title: Screen display damage
+    goal_type: troubleshooting
+
+  - keywords: [blank, black screen, dark screen, no display, nothing on screen, won't turn on, not turning on, no image]
+    topic: Blank Display
+    title: Blank display issue
+    goal_type: troubleshooting
+
+  - keywords: [flicker, flash, flashing, blink, strobe]
+    topic: Screen Flicker
+    title: Screen flicker issue
+    goal_type: troubleshooting
+
+  - keywords: [touch, lag, laggy, delayed, unresponsive, responsiveness, slow response, touch sensitivity]
+    topic: Touch Responsiveness
+    title: Touch response issue
+    goal_type: troubleshooting
+
+  - keywords: [distort, distorted, garbled, glitch, corrupted]
+    topic: Screen Distortion
+    title: Screen distortion issue
+    goal_type: troubleshooting
+
+  - keywords: [rotate, rotation, orientation, landscape, portrait, auto rotate]
+    topic: Screen Rotation
+    title: Screen rotation issue
+    goal_type: troubleshooting
+
+  - keywords: [half black, half dark, partial display, one side]
+    topic: Partial Display
+    title: Partial display issue
+    goal_type: troubleshooting
+
+  - keywords: [floating circle, floating, assistant menu, quick shortcuts]
+    topic: Floating Menu
+    title: Floating menu removal
+    goal_type: configuration
+
+  - keywords: [small screen, doesn't fill, won't expand, screen size]
+    topic: Screen Size
+    title: Screen size adjustment
+    goal_type: configuration
+
+  - keywords: [data transfer, transfer data, migrate, QR code]
+    topic: Data Transfer
+    title: Data transfer issue
+    goal_type: troubleshooting
+
+  - keywords: [email, gmail, inbox]
+    topic: Email
+    title: Email connection issue
+    goal_type: troubleshooting
+
+  - keywords: [screen mirroring, smart view, casting, mirror]
+    topic: Screen Mirroring
+    title: Screen mirroring issue
+    goal_type: troubleshooting
+
+  - keywords: [multi window, split screen, app pair]
+    topic: Multi Window
+    title: Multi window setup
+    goal_type: configuration
+
+  - keywords: [camera, photo, video flicker]
+    topic: Camera
+    title: Camera display issue
+    goal_type: troubleshooting
+
+  - keywords: [charger, charging, plug in charger]
+    topic: Charging Display
+    title: Charging display issue
+    goal_type: troubleshooting
+
+  - keywords: [blue screen, tiny text, boot, startup]
+    topic: Boot Failure
+    title: Boot failure issue
+    goal_type: troubleshooting
+
+  - keywords: [activation, activate, carrier, deactivated]
+    topic: Device Activation
+    title: Device activation issue
+    goal_type: troubleshooting
+
+  - keywords: [inner screen, cover screen, fold screen]
+    topic: Foldable Display
+    title: Foldable display issue
+    goal_type: troubleshooting
+
+# Fallback — if nothing matches
+fallback:
+  topic: Screen
+  title: Screen display issue
+  goal_type: troubleshooting
+
+# Description templates keyed by action verb/category
+description_templates:
+  clear_cache:
+    template: "It will clear temporary stored data."
+  clear_data:
+    template: "It will reset app stored data."
+  restart:
+    template: "It will restart device to resolve."
+  safe_mode:
+    template: "It will boot in diagnostic mode."
+  factory_reset:
+    template: "It will erase all device data."
+  force_restart:
+    template: "It will force device to restart."
+  check_damage:
+    template: "It will check for physical damage."
+  charge:
+    template: "It will charge the device battery."
+  power_on:
+    template: "It will attempt to power on."
+  update_software:
+    template: "It will update the device software."
+  contact_support:
+    template: "It will connect with customer support."
+  visit_service:
+    template: "It will guide to service center."
+  backup:
+    template: "It will back up device data."
+  settings_navigate:
+    template: "It will open the settings screen."
+  touch_sensitivity:
+    template: "It will adjust touch sensitivity settings."
+  display_settings:
+    template: "It will adjust the display settings."
+  connections:
+    template: "It will check connection settings."
+  screen_orientation:
+    template: "It will adjust screen orientation settings."
+  navigation_bar:
+    template: "It will adjust navigation bar settings."
+  data_transfer:
+    template: "It will open data transfer app."
+  repair_service:
+    template: "It will arrange repair service options."
+  remove_account:
+    template: "It will remove the email account."
+  app_management:
+    template: "It will manage the app settings."
+  general:
+    template: "It will open the relevant screen."
