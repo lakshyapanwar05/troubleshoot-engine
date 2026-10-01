@@ -8,6 +8,19 @@ A rule-based, offline-first Python backend that converts customer complaints and
 
 ---
 
+## Run locally (Python 3.11)
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate          # Linux/Mac: source .venv/bin/activate
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+uvicorn app.main:app --port 8000
+```
+
+Then open http://localhost:8000 (Frontend UI) or http://localhost:8000/docs (API documentation).
+
+---
+
 ## Key Capabilities & Invariants
 
 1. **Zero URL Leaks**: String-level regex scanning scrubs and rejects any unauthorized external URLs, raw web links, or protocol leaks.
@@ -182,6 +195,11 @@ Start the FastAPI production server via Uvicorn:
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
+
+Once running:
+- **Interactive Web UI:** http://localhost:8000 (served statically from `frontend/TroubleShoot`)
+- **Interactive Swagger Docs:** http://localhost:8000/docs
+- **ReDoc Documentation:** http://localhost:8000/redoc
 
 ### Endpoints
 
